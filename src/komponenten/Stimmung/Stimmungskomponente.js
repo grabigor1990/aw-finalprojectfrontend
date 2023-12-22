@@ -2,9 +2,9 @@ import React from 'react';
 
 function Stimmungskomponente(props) {
     return (
-        <>
-            Stimmungskomponente
-        </>
+        <div className="Stimmungskomponente">
+            <p>Stimmungskomponente</p>
+        </div>
     );
 }
 

@@ -2,9 +2,16 @@ import React from 'react';
 
 function Balsamkomponente(props) {
     return (
-        <>
-            Balsamkomponente
-        </>
+        <div className="Balsamkomponente">
+            <div>Balsamkomponente
+                <p>Ideen, was in die Balsamkomponente gehört:</p>
+                <ul>
+                    <li>Balsam</li>
+                </ul>
+
+            </div>
+
+        </div>
     );
 }
 

@@ -2,9 +2,9 @@ import React from 'react';
 
 function Profilkomponente(props) {
     return (
-        <>
-            Profilkomponente
-        </>
+        <div className="Profilkomponente">
+            <p>Profilkomponente</p>
+        </div>
     );
 }
 
