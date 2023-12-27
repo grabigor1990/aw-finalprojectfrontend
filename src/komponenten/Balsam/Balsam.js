@@ -20,5 +20,4 @@ function Balsam({ balsam, onDelete, onCheckboxChange }) {
         </div>
     );
 }
-
 export default Balsam;

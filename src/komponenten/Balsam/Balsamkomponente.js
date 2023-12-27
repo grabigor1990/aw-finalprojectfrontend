@@ -77,5 +77,4 @@ function Balsamkomponente() {
         </div>
     );
 }
-
 export default Balsamkomponente;
