@@ -2,7 +2,7 @@ import React from 'react';
 
 function Diagrammkomponente(props) {
     return (
-        <div className="Diagrammkomponente">
+        <div className="Diagrammkomponente Komponente">
             Diagrammkomponente
         </div>
     );

@@ -45,7 +45,7 @@ function Balsamkomponente() {
     }
 
     return (
-        <div className="Balsamkomponente">
+        <div className="Balsamkomponente Komponente">
             <div>
                 <h3>Balsamkomponente</h3>
                 <input type="text"

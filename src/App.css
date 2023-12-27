@@ -1,0 +1,44 @@
+.Layout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas:
+            'Profilkomponente Kryptonitkomponente'
+            'Profilkomponente Kryptonitkomponente'
+            'Stimmungskomponente Kryptonitkomponente'
+            'Stimmungskomponente Balsamkomponente'
+            'Stimmungskomponente Balsamkomponente'
+            'Diagrammkomponente Diagrammkomponente'
+            'Diagrammkomponente Diagrammkomponente'
+            'Diagrammkomponente Diagrammkomponente'
+            'Diagrammkomponente Diagrammkomponente'
+            'Diagrammkomponente Diagrammkomponente'
+}
+
+.zentriert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Komponente {
+    border: 1px solid black;
+}
+
+.Profilkomponente {
+    grid-area: Profilkomponente;
+}
+.Balsamkomponente{
+    grid-area: Balsamkomponente;
+}
+.Diagrammkomponente{
+    grid-area: Diagrammkomponente;
+}
+.Kryptonitkomponente{
+    grid-area: Kryptonitkomponente;
+}
+.Stimmungskomponente{
+    grid-area: Stimmungskomponente;
+}
