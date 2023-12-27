@@ -1,0 +1,16 @@
+.kryptonit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.kryptonit {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            'kryptonitBezeichnung slideBar slideBar kryptonitStatustext'
+            ;
+}
