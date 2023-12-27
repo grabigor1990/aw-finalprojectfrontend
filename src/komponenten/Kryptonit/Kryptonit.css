@@ -1,16 +1,37 @@
-.kryptonit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.kryptonitContainer {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 1fr;
+    grid-template-areas:
+            'kryptonitenListe'
+            'kryptonitenListe'
+            'kryptonitenListe'
+            'kryptonitenListe'
+            'kryptonitErstellen';
 }
+
+.kryptonitenListe {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.kryptonitErstellen {
+    margin: 0 1rem;
+}
+
 .kryptonit {
+    margin: 1rem;
     display: grid;
     justify-content: center;
     align-items: center;
 
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 0.25fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-            'kryptonitBezeichnung slideBar slideBar kryptonitStatustext'
-            ;
+            'kryptonitBezeichnung slideBar slideBar kryptonitStatustext kryptonitLöschen';
+}
+
+.kryptonitStatustext {
+    text-align: center;
 }
