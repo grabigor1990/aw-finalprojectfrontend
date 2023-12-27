@@ -6,7 +6,7 @@ import TemporaererLogin from "./komponenten/TemporaererLogin";
 function App() {
     return (
         <>
-            <Navbar/>
+            <Navbar/> <br/> <br/>
             <TemporaererLogin/>
             <Layout/>
         </>

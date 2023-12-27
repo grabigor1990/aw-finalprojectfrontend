@@ -1,10 +1,20 @@
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     color: #fff;
     border: 1px solid black;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(51, 51, 51, 0.8);
 }
 
 .navbar button {
@@ -23,5 +33,4 @@
 
 .navbar img {
     max-width: 30px;
-
 }
