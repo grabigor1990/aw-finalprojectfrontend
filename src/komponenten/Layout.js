@@ -8,14 +8,13 @@ import Stimmungskomponente from './Stimmung/Stimmungskomponente.js'
 
 function Layout(props) {
     return (
-        <>
+        <div className="Layout">
             <Profilkomponente/>
             <Balsamkomponente/>
             <Kryptonitkomponente/>
             <Diagrammkomponente/>
             <Stimmungskomponente/>
-
-        </>
+        </div>
     );
 }
 
