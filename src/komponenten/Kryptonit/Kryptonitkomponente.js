@@ -23,6 +23,7 @@ function Kryptonitkomponente(props) {
 
     return (
         <div className="Kryptonitkomponente Komponente">
+            <h2>Schlechte Angewohnheiten</h2>
             <div>
             {kryptonite ? kryptonite.map((kryptonit, index) => (
                 <Kryptonit key={index} kryptonitId={kryptonit.kryptonitId} bezeichnung={kryptonit.bezeichnung} />
