@@ -1,0 +1,17 @@
+.balsamContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 1fr;
+    grid-template-areas:
+            'balsamListe'
+            'balsamListe'
+            'balsamListe'
+            'balsamListe'
+            'balsamErstellen'
+}
+
+.balsamListe{
+    max-height: max-content;
+    overflow-y: auto;
+}
+
+
