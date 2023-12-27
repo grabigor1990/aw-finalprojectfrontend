@@ -1,0 +1,27 @@
+.navbar {
+    color: #fff;
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.navbar button.active {
+    background-color: #777;
+}
+
+.navbar img {
+    max-width: 30px;
+
+}
