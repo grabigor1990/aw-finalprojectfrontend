@@ -1,8 +1,7 @@
 .kryptonitHeader {
     height: auto;
 }
-.kryptonitContainer {
-    height: 80%;
+.kryptonitBody {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4fr 1fr;
@@ -33,7 +32,7 @@
     grid-template-columns: 1fr 2fr 1fr 0.25fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-            'kryptonitBezeichnung slideBar slideBar kryptonitStatustext kryptonitLöschen';
+            'kryptonitBezeichnung kryptonitSlideBar kryptonitSlideBar kryptonitStatustext kryptonitLöschen';
 }
 
 .kryptonitStatustext {

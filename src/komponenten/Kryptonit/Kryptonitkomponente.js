@@ -67,7 +67,7 @@ function Kryptonitkomponente(props) {
     return (
         <div className="Kryptonitkomponente Komponente">
             <h2 className="kryptonitHeader">Schlechte Angewohnheiten</h2>
-            <div className="kryptonitContainer">
+            <div className="kryptonitBody">
                 <div className="kryptonitenListe">
                     {kryptonite ? kryptonite.map((kryptonit, index) => (
                         <Kryptonit key={index} kryptonitId={kryptonit.kryptonitId} bezeichnung={kryptonit.bezeichnung}
