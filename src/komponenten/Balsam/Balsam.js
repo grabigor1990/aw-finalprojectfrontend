@@ -1,5 +1,9 @@
 import React from 'react';
 import './Balsam.css';
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
+axios.defaults.headers['Content-Type'] = 'application/json';
 
 function Balsam({ balsam, onDelete, onCheckboxChange }) {
     const bearbeiteCheckbox = (event) => {
@@ -8,15 +12,15 @@ function Balsam({ balsam, onDelete, onCheckboxChange }) {
 
     return (
         <div className="balsam">
-            <label>
+            <label className="balsamBezeichnung">
                 {balsam.bezeichnung}
-                <input
+                <input className="checkbox"
                     type="checkbox"
                     checked={balsam.checked}
                     onChange={bearbeiteCheckbox}
                 />
             </label>
-            <button onClick={() => onDelete(balsam.balsamId)}>🗑️</button>
+            <button className="balsamLoeschen" onClick={() => onDelete(balsam.balsamId)}>🗑️</button>
         </div>
     );
 }

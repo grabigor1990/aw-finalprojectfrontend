@@ -2,6 +2,9 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Balsam from './Balsam';
 
+axios.defaults.withCredentials = true;
+axios.defaults.headers['Content-Type'] = 'application/json';
+
 function Balsamkomponente() {
     const [balsamListe, setBalsamListe] = useState([]);
     const [neuerBalsam, setNeuerBalsam] = useState('');
@@ -29,6 +32,13 @@ function Balsamkomponente() {
         }
     };
 
+    //Funktion, dass auch beim Drücken der Entertaste der Balsam hinzugefügt wird
+    const bearbeiteBalsamHinzufuegenDurchEntertaste = (e) => {
+        if (e.key === 'Enter') {
+            bearbeiteBalsamHinzufuegen();
+        }
+    };
+
     const bearbeiteBalsamLoeschen = async (balsamId) => {
         try {
             await axios.delete(`http://localhost:8080/balsam/${balsamId}`);
@@ -40,18 +50,15 @@ function Balsamkomponente() {
 
     const bearbeiteCheckboxAenderung = async (balsamId, checked) => {
         try {
-            // Hier sendest du eine Anfrage an das Backend, um den Aktivitätsstatus zu aktualisieren
-            await axios.post(`/balsamEintrag/${balsamId}`, { aktiv: checked });
-            // Hier könntest du etwas tun, nachdem die Anfrage erfolgreich abgeschlossen wurde
+            await axios.post(`http://localhost:8080/balsamEintrag/${balsamId}`, {aktiv: checked});
         } catch (error) {
-            // Hier könntest du mit einem Fehler umgehen, falls die Anfrage fehlschlägt
             console.error('Fehler beim Aktualisieren des Balsams:', error);
         }
     };
 
     return (
-        <div className="Balsamkomponente">
-            <h2>Dein Balsam für die Seele</h2>
+        <div className="Balsamkomponente Komponente">
+            <h2 className="balsamHeader">Dein Balsam für die Seele</h2>
             <div className="balsamContainer">
                 <div className="balsamListe">
                     {balsamListe.map((balsam) => (
@@ -67,14 +74,16 @@ function Balsamkomponente() {
                 </div>
 
                 <input className="balsamErstellen"
-                    type="text"
-                    value={neuerBalsam}
-                    onChange={(e) => setNeuerBalsam(e.target.value)}
-                    placeholder="Neuen Balsam eingeben"
+                       type="text"
+                       value={neuerBalsam}
+                       onChange={(e) => setNeuerBalsam(e.target.value)}
+                       onKeyDown={bearbeiteBalsamHinzufuegenDurchEntertaste}
+                       placeholder="Neuen Balsam eingeben"
                 />
                 <button className="balsamErstellen" onClick={bearbeiteBalsamHinzufuegen}>Hinzufügen</button>
             </div>
         </div>
     );
 }
+
 export default Balsamkomponente;
