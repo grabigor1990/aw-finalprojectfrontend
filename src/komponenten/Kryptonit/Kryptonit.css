@@ -1,5 +1,8 @@
+.kryptonitHeader {
+    height: auto;
+}
 .kryptonitContainer {
-
+    height: 80%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4fr 1fr;
@@ -9,6 +12,7 @@
             'kryptonitenListe'
             'kryptonitenListe'
             'kryptonitErstellen';
+    gap: 5px;
 }
 
 .kryptonitenListe {

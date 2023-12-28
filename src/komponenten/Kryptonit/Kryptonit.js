@@ -11,36 +11,39 @@ axios.defaults.headers['Content-Type'] = 'application/json';
 
 function Kryptonit(props) {
 
-    const [haeufigkeitsWort, setHaeufigkeitsWort] = useState(zahlZuWort(props.haeufigkeit));
-    const [haeufigkeit, setHaeufigkeit] = useState(props.haeufigkeit||'0');
+    const [haeufigkeitsWort, setHaeufigkeitsWort] = useState("");
+    const [haeufigkeit, setHaeufigkeit] = useState(props.haeufigkeit || "0");
 
+    useEffect(() => {
+        zahlZuWort(props.haeufigkeit.toString())
+    }, []);
 
-    function zahlZuWort(zahl){
+    function zahlZuWort(zahl) {
         switch (zahl) {
             case "0":
                 setHaeufigkeitsWort("gar nicht")
-                return "gar nicht"
+                break;
             case "1":
                 setHaeufigkeitsWort("sehr wenig")
-                return "sehr wenig"
+                break;
             case "2":
                 setHaeufigkeitsWort("ein bisschen")
-                return "ein bisschen"
+                break;
             case "3":
                 setHaeufigkeitsWort("normal")
-                return "normal"
+                break;
             case "4":
                 setHaeufigkeitsWort("eher viel")
-                return "eher viel"
+                break;
+
             case "5":
                 setHaeufigkeitsWort("viel")
-                return "viel"
+                break;
             case "6":
                 setHaeufigkeitsWort("sehr viel")
-                return "sehr viel"
+                break;
         }
     }
-
     function handleChange(event) {
 
         axios({
@@ -61,28 +64,16 @@ function Kryptonit(props) {
         zahlZuWort(event.target.value)
     }
 
-    function handleClick(event){
-        axios({
-            method: "delete",
-            url: "http://localhost:8080/kryptonit/" + props.kryptonitId,
-            data: {
-                haeufigkeit: event.target.value
-            },
-        })
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
     return (
         <div className="kryptonit">
             <p className="kryptonitBezeichnung">{props.bezeichnung}: </p>
-            <input className="kryptonitSlideBar" onChange={handleChange} type="range" min="0" max="6" step="1" value={haeufigkeit}/>
+            <input className="kryptonitSlideBar" onChange={handleChange} type="range" min="0" max="6" step="1"
+                   value={haeufigkeit}/>
             <span className="kryptonitStatustext">{haeufigkeitsWort}</span>
-            <button className="kryptonitLöschen" onClick={handleClick}>🗑️</button>
+            <button className="kryptonitLöschen" onClick={() => {
+                props.loeschFunktion(props.kryptonitId)
+            }}>🗑️
+            </button>
         </div>
     );
 }
