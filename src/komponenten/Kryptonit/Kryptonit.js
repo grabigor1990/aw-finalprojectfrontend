@@ -18,32 +18,7 @@ function Kryptonit(props) {
         zahlZuWort(props.haeufigkeit.toString())
     }, []);
 
-    function zahlZuWort(zahl) {
-        switch (zahl) {
-            case "0":
-                setHaeufigkeitsWort("gar nicht")
-                break;
-            case "1":
-                setHaeufigkeitsWort("sehr wenig")
-                break;
-            case "2":
-                setHaeufigkeitsWort("ein bisschen")
-                break;
-            case "3":
-                setHaeufigkeitsWort("normal")
-                break;
-            case "4":
-                setHaeufigkeitsWort("eher viel")
-                break;
 
-            case "5":
-                setHaeufigkeitsWort("viel")
-                break;
-            case "6":
-                setHaeufigkeitsWort("sehr viel")
-                break;
-        }
-    }
     function handleChange(event) {
 
         axios({
@@ -76,6 +51,33 @@ function Kryptonit(props) {
             </button>
         </div>
     );
+
+    function zahlZuWort(zahl) {
+        switch (zahl) {
+            case "0":
+                setHaeufigkeitsWort("gar nicht")
+                break;
+            case "1":
+                setHaeufigkeitsWort("sehr wenig")
+                break;
+            case "2":
+                setHaeufigkeitsWort("ein bisschen")
+                break;
+            case "3":
+                setHaeufigkeitsWort("normal")
+                break;
+            case "4":
+                setHaeufigkeitsWort("eher viel")
+                break;
+
+            case "5":
+                setHaeufigkeitsWort("viel")
+                break;
+            case "6":
+                setHaeufigkeitsWort("sehr viel")
+                break;
+        }
+    }
 }
 
 export default Kryptonit;
