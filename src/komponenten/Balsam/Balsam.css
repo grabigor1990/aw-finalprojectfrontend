@@ -1,0 +1,61 @@
+.balsamHeader {
+    height: auto;
+}
+
+.balsamContainer {
+    display: grid;
+    height: 80%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas:
+        'balsamListe'
+        'balsamListe'
+        'balsamListe'
+        'balsamErstellen';
+    gap: 5px;
+}
+
+.balsamListe {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.balsamErstellen {
+    margin: 0 1rem;
+}
+
+.balsam{
+    display: grid;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    grid-template-columns: 3fr 0.25fr 0.25fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:'balsamBezeichnung checkbox balsamLoeschen';
+}
+
+/*
+.balsam{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.balsam.aktiv{
+    background-color: #107810;
+    color: white;
+}
+
+.balsam.passiv{
+    background-color: darkred;
+    color: white;
+}
+
+.checkbox{
+    margin-right: 8px ;
+}*/
