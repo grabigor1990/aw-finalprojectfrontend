@@ -1,16 +1,37 @@
-.balsamContainer {
-    grid-template-columns: 1fr;
-    grid-template-rows: 4fr 1fr;
-    grid-template-areas:
-            'balsamListe'
-            'balsamListe'
-            'balsamListe'
-            'balsamListe'
-            'balsamErstellen'
+.balsamHeader {
+    height: auto;
 }
 
-.balsamListe{
-    max-height: max-content;
+.balsamContainer {
+    display: grid;
+    height: 80%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas:
+        'balsamListe'
+        'balsamListe'
+        'balsamListe'
+        'balsamErstellen';
+    gap: 5px;
+}
+
+.balsamListe {
+    max-height: 200px;
     overflow-y: auto;
+}
+
+.balsamErstellen {
+    margin: 0 1rem;
+}
+
+.balsam{
+    display: grid;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    grid-template-columns: 4fr 0.25fr 0.25fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:'balsamBezeichnung checkbox balsamLoeschen';
 }
 
