@@ -22,7 +22,6 @@ function Kryptonitkomponente(props) {
             url: "http://localhost:8080/kryptonite",
         })
             .then(response => {
-                console.log(response.data)
                 setKryptonite(response.data.daten);
             })
             .catch(error => {

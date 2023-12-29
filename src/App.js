@@ -4,6 +4,7 @@ import Navbar from "./komponenten/Navbar/Navbar";
 import TemporaererLogin from "./komponenten/TemporaererLogin";
 
 function App() {
+
     return (
         <>
             <Navbar/> <br/> <br/>
@@ -11,6 +12,7 @@ function App() {
             <Layout/>
         </>
     );
+
 }
 
 export default App;

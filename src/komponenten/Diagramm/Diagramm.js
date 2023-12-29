@@ -21,21 +21,30 @@ ChartJS.register(
 );
 function Diagramm(props) {
 
+    const stimmungImages = [
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/0.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/1.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/2.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/3.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/4.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/5.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/6.png",
+    ]
+
     function createGradient(ctx, area) {
         const colorStart = "crimson"
-        const colorNearMid= "orangeasa"
+        const colorNearMid= "orange"
         const colorMid = "yellow"
-        const colorNearEnd = "lime"
-        const colorEnd = "green"
+        const colorNearEnd = "yellowgreen"
+        const colorEnd = "lime"
 
         const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
 
         gradient.addColorStop(0, colorStart);
-        gradient.addColorStop(0.25, colorStart);
-        gradient.addColorStop(0.5, colorMid);
-        gradient.addColorStop(0.75, colorMid);
+        gradient.addColorStop(0.25, colorNearMid);
+        gradient.addColorStop(0.45, colorMid);
+        gradient.addColorStop(0.7, colorNearEnd);
         gradient.addColorStop(1, colorEnd);
-
         return gradient;
     }
 
@@ -50,16 +59,54 @@ function Diagramm(props) {
                 data: yAxis,
                 borderColor: props.color,
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                lineTension: 0.4,
+                pointHitRadius: 50
             },
         ],
     };
 
     const options = {
-        scales: {
-            y: {
-                min: 0,
-                max: 6,
+
+        layout: {
+            padding: {
+                left: 20, // Platz links von der Y-Achse
+                right: 20, // Platz rechts von der Y-Achse
+                top: 20, // Platz über der X-Achse
+                bottom: 20, // Platz unter der X-Achse
             },
+        },
+        scales: {
+            x: {
+                grid: {
+                    lineWidth: 3, // Dicke der Linien der X-Achse
+                    display: false, // Raster für die y-Achse ausblenden
+                },
+                borderWidth: 6, // Dicke der X-Achse
+
+            },
+            y: {
+                min: -1,
+                max: 7,
+                grid: {
+                    display: false, // Raster für die y-Achse ausblenden
+                },
+                borderWidth: 10, // Dicke der X-Achse
+            },
+
+        },
+        elements: {
+            point: {
+                pointStyle: function (context) {
+                    if (context.parsed && typeof context.parsed.y !== 'undefined') {
+                        console.log("y gefunden!")
+                        const value = context.parsed.y;
+                        const image = new Image(75, 75);  // Erstelle ein Image-Objekt mit der gewünschten Größe
+                        image.src = stimmungImages[value];
+                        return image
+                    }
+                },
+                radius: 35,
+            }
         },
         plugins: {
             tooltip: {
@@ -88,10 +135,13 @@ function Diagramm(props) {
                     },
                     title: function () {
                         // Hier kannst du den Tooltip-Titel anpassen
-                        return 'Benutzerdefinierter Tooltip-Titel';
+                        return 'Hier kommt irgendwie noch der Kommentar rein!';
                     },
                 },
             },
+            legend: {
+                display: false, // Setze diese Eigenschaft auf false, um die Legende zu verstecken
+            }
         },
     };
 
@@ -101,7 +151,6 @@ function Diagramm(props) {
     })
 
     useEffect(() => {
-        console.log("geladen")
         const chart = chartRef.current;
 
         if (!chart) {
@@ -122,7 +171,7 @@ function Diagramm(props) {
 
 
     return (
-        <Chart ref={chartRef} type='line' data={chartData} options={options}/>
+        <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}/>
     );
 }
 
