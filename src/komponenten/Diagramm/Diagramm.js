@@ -21,9 +21,19 @@ ChartJS.register(
 );
 function Diagramm(props) {
 
+    const stimmungImages = [
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/0.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/1.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/2.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/3.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/4.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/5.png",
+        "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/6.png",
+    ]
+
     function createGradient(ctx, area) {
         const colorStart = "crimson"
-        const colorNearMid= "orangeasa"
+        const colorNearMid= "orange"
         const colorMid = "yellow"
         const colorNearEnd = "lime"
         const colorEnd = "green"
@@ -50,16 +60,41 @@ function Diagramm(props) {
                 data: yAxis,
                 borderColor: props.color,
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                lineTension: 0.4,
+                pointHitRadius: 50
             },
         ],
     };
 
     const options = {
+
+        layout: {
+            padding: {
+                left: 20, // Platz links von der Y-Achse
+                right: 20, // Platz rechts von der Y-Achse
+                top: 20, // Platz über der X-Achse
+                bottom: 20, // Platz unter der X-Achse
+            },
+        },
         scales: {
             y: {
                 min: 0,
-                max: 6,
+                max: 7,
             },
+        },
+        elements: {
+            point: {
+                pointStyle: function (context) {
+                    if (context.parsed && typeof context.parsed.y !== 'undefined') {
+                        console.log("y gefunden!")
+                        const value = context.parsed.y;
+                        const image = new Image(100, 100);  // Erstelle ein Image-Objekt mit der gewünschten Größe
+                        image.src = stimmungImages[value];
+                        return image
+                    }
+                },
+                radius: 35,
+            }
         },
         plugins: {
             tooltip: {
@@ -101,7 +136,6 @@ function Diagramm(props) {
     })
 
     useEffect(() => {
-        console.log("geladen")
         const chart = chartRef.current;
 
         if (!chart) {
@@ -122,7 +156,7 @@ function Diagramm(props) {
 
 
     return (
-        <Chart ref={chartRef} type='line' data={chartData} options={options}/>
+        <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}/>
     );
 }
 
