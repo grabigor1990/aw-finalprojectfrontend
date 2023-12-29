@@ -1,0 +1,75 @@
+.Stimmungskomponente{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 2fr 4fr;
+    grid-template-areas:
+            'stimmungBody'
+            'stimmungFooter';
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.stimmungBody {
+    border: 2px solid black;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: 1fr 4fr ;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            'aktuellerSmiley kommentar kommentar kommentar kommentar';
+    justify-content: center;
+    align-items: center;
+}
+.aktuellerSmiley{
+    width: 120px;
+}
+.stimmungsDetails {
+    margin-left: 20px;
+}
+
+.erstellungsZeit {
+    font-size: 0.7rem;
+}
+
+.kommentar {
+    font-weight: bold;
+}
+.stimmungFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 40px;
+}
+
+.verbleibendeZeit{
+    padding: 0 10px;
+    font-size: 0.7rem;
+    text-align: left;
+}
+
+.smileyContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+
+.smileyIcon {
+    cursor: pointer;
+    width: 100%;
+}
+.smileyIcon:hover {
+    transform: scale(1.2);
+}
+
+.kommentarErstellen {
+    align-self: center;
+    width: 80%;
+    border-radius: 15px;
+    padding-left: 15px;
+    height: 30px;
+}

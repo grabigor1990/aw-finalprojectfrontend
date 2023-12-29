@@ -7,11 +7,9 @@
     grid-template-rows: 4fr 1fr;
     grid-template-areas:
             'kryptonitenListe'
-            'kryptonitenListe'
-            'kryptonitenListe'
-            'kryptonitenListe'
             'kryptonitErstellen';
     gap: 5px;
+    justify-content: center;
 }
 
 .kryptonitenListe {
@@ -20,7 +18,12 @@
 }
 
 .kryptonitErstellen {
-    margin: 0 1rem;
+    align-self: center;
+    justify-self: center;
+    width: 85%;
+    border-radius: 15px;
+    padding-left: 15px;
+    height: 50px;
 }
 
 .kryptonit {

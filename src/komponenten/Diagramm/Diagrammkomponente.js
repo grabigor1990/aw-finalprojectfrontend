@@ -56,7 +56,6 @@ function Diagrammkomponente(props) {
                     setXAchseStimmungen(aktualisierteXAchseStimmungen)
                     setYAchseStimmungen(aktualisierteYAchseStimmungen)
                 })
-        console.log(aktualisierteXAchseStimmungen)
         /*//KryptonitEintraege aktualisieren
 
         const aktualisierteXAchseKryptonitEintraege = []
