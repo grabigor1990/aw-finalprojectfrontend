@@ -1,26 +1,41 @@
-import React from 'react';
+import {useEffect, useState} from "react";
 import './Balsam.css';
-import axios from "axios";
 
-axios.defaults.withCredentials = true;
-axios.defaults.headers['Content-Type'] = 'application/json';
+function Balsam({ balsam, toggleAktivitaet, loescheBalsam }) {
+    const [isClicked, setIsClicked] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
-function Balsam({ balsam, onDelete, onCheckboxChange }) {
-    const bearbeiteCheckbox = (event) => {
-        onCheckboxChange(balsam.balsamId, event.target.checked);
+    useEffect(() => {
+        if (balsam.taeglicheEintraege && balsam.taeglicheEintraege.length > 0) {
+            setIsActive(balsam.taeglicheEintraege[balsam.taeglicheEintraege.length - 1].aktiv);
+        } else {
+            setIsActive(false);
+        }
+    }, [balsam]);
+
+    const behandeleToggle = () => {
+        toggleAktivitaet(balsam.balsamId);
+        setIsClicked(true);
+        setIsActive(!isActive);
+    };
+
+    const behandeleLoeschen = () => {
+        loescheBalsam(balsam.balsamId);
     };
 
     return (
-        <div className="balsam">
-            <label className="balsamBezeichnung">
+        <div>
+            <button
+                onClick={behandeleToggle}
+                style={{
+                    backgroundColor: isActive ? 'green' : 'darkred',
+                    color: isActive ? 'white' : 'lightgray',
+                    filter: isClicked ? 'none' : 'grayscale(100%)'
+                }}
+            >
                 {balsam.bezeichnung}
-                <input className="checkbox"
-                    type="checkbox"
-                    checked={balsam.checked}
-                    onChange={bearbeiteCheckbox}
-                />
-            </label>
-            <button className="balsamLoeschen" onClick={() => onDelete(balsam.balsamId)}>🗑️</button>
+            </button>
+            <button onClick={behandeleLoeschen}>🗑️</button>
         </div>
     );
 }
