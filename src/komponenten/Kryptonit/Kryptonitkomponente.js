@@ -73,8 +73,7 @@ function Kryptonitkomponente(props) {
                                    haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0} loeschFunktion={loescheKryptonit}/>
                     )) : <p>Trage hier die Angewohnheiten ein, die du tracken möchtest.</p>}
                 </div>
-                <input className="kryptonitErstellen" type="text" onChange={handleChange} value={neuesKryptonit}/>
-                <button className="kryptonitErstellen" onClick={erstelleKryptonit}>Neues Kryptonit hinzufügen</button>
+                <input className="kryptonitErstellen" type="text" onChange={handleChange} value={neuesKryptonit} placeholder="Füge eine neue schlechte Angewohnheit hinzu, die du tracken möchtest"/>
             </div>
         </div>
     );

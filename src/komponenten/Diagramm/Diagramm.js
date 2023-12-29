@@ -98,7 +98,6 @@ function Diagramm(props) {
             point: {
                 pointStyle: function (context) {
                     if (context.parsed && typeof context.parsed.y !== 'undefined') {
-                        console.log("y gefunden!")
                         const value = context.parsed.y;
                         const image = new Image(75, 75);  // Erstelle ein Image-Objekt mit der gewünschten Größe
                         image.src = stimmungImages[value];
