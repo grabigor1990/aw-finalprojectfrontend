@@ -35,17 +35,16 @@ function Diagramm(props) {
         const colorStart = "crimson"
         const colorNearMid= "orange"
         const colorMid = "yellow"
-        const colorNearEnd = "lime"
-        const colorEnd = "green"
+        const colorNearEnd = "yellowgreen"
+        const colorEnd = "lime"
 
         const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
 
         gradient.addColorStop(0, colorStart);
-        gradient.addColorStop(0.25, colorStart);
-        gradient.addColorStop(0.5, colorMid);
-        gradient.addColorStop(0.75, colorMid);
+        gradient.addColorStop(0.25, colorNearMid);
+        gradient.addColorStop(0.45, colorMid);
+        gradient.addColorStop(0.7, colorNearEnd);
         gradient.addColorStop(1, colorEnd);
-
         return gradient;
     }
 
@@ -77,10 +76,23 @@ function Diagramm(props) {
             },
         },
         scales: {
-            y: {
-                min: 0,
-                max: 7,
+            x: {
+                grid: {
+                    lineWidth: 3, // Dicke der Linien der X-Achse
+                    display: false, // Raster für die y-Achse ausblenden
+                },
+                borderWidth: 6, // Dicke der X-Achse
+
             },
+            y: {
+                min: -1,
+                max: 7,
+                grid: {
+                    display: false, // Raster für die y-Achse ausblenden
+                },
+                borderWidth: 10, // Dicke der X-Achse
+            },
+
         },
         elements: {
             point: {
@@ -88,7 +100,7 @@ function Diagramm(props) {
                     if (context.parsed && typeof context.parsed.y !== 'undefined') {
                         console.log("y gefunden!")
                         const value = context.parsed.y;
-                        const image = new Image(100, 100);  // Erstelle ein Image-Objekt mit der gewünschten Größe
+                        const image = new Image(75, 75);  // Erstelle ein Image-Objekt mit der gewünschten Größe
                         image.src = stimmungImages[value];
                         return image
                     }
@@ -123,10 +135,13 @@ function Diagramm(props) {
                     },
                     title: function () {
                         // Hier kannst du den Tooltip-Titel anpassen
-                        return 'Benutzerdefinierter Tooltip-Titel';
+                        return 'Hier kommt irgendwie noch der Kommentar rein!';
                     },
                 },
             },
+            legend: {
+                display: false, // Setze diese Eigenschaft auf false, um die Legende zu verstecken
+            }
         },
     };
 
