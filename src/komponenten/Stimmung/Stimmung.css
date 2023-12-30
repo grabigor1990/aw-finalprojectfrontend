@@ -12,6 +12,7 @@
 }
 
 .stimmungBody {
+    padding: 30px;
     border: 2px solid black;
     border-radius: 40px;
     display: grid;
@@ -39,13 +40,13 @@
 .stimmungFooter {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100%;
     border: 2px solid black;
     border-radius: 40px;
 }
 
-.verbleibendeZeit{
+.StimmungErstellenStatus{
     padding: 0 10px;
     font-size: 0.7rem;
     text-align: left;
@@ -67,6 +68,36 @@
 }
 
 .kommentarErstellen {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.kommentarInput {
+    align-self: center;
+    justify-self: center;
+    width: 85%;
+    border-radius: 15px;
+    padding-left: 15px;
+    height: 50px;
+}
+
+.kommentarButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-image: url("https://raw.githubusercontent.com/moritzrose/StimmungImages/main/papierflieger.png");
+    background-size: cover;
+    background-color: white;
+    border: none;
+}
+
+.kommentarButton:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.kommentarInput {
     align-self: center;
     width: 80%;
     border-radius: 15px;

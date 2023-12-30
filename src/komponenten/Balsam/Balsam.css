@@ -21,8 +21,33 @@
 }
 
 .balsamErstellen {
-    margin: 0 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.balsamInput {
+    align-self: center;
+    justify-self: center;
+    width: 85%;
     border-radius: 15px;
+    padding-left: 15px;
+    height: 50px;
+}
+
+.balsamButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-image: url("https://raw.githubusercontent.com/moritzrose/StimmungImages/main/plusgr%C3%BCn.png");
+    background-size: cover;
+    background-color: white;
+    border: none;
+}
+
+.balsamButton:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .balsam{

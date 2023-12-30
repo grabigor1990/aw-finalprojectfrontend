@@ -74,13 +74,17 @@ function Balsamkomponente() {
                         />
                     )) : <p>Trage hier deine Balsame ein, die Du tracken möchtest</p>}
                 </div>
-                <input
-                    className="balsamErstellen"
-                    type="text"
-                    onChange={handleChange}
-                    value={neuerBalsam}
-                />
-                <button className="balsamErstellen" onClick={erstelleBalsam}>Neuen Balsam hinzufügen</button>
+                <div className="balsamErstellen">
+                    <input className="balsamInput"
+                           type="text"
+                           onChange={handleChange}
+                           value={neuerBalsam}
+                           placeholder="Füge eine neue gute Angewohnheit hinzu..."
+                           required
+                    />
+                    <button className="balsamButton" onClick={erstelleBalsam}></button>
+                </div>
+
             </div>
         </div>
     );

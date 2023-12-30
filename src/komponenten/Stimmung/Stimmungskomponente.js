@@ -16,25 +16,45 @@ function Stimmungskomponente() {
     ]
 
     const [stimmungen, setStimmungen] = useState([])
+    const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(true); // Neuer Ladezustand
 
     useEffect(() => {
+        aktualisiereStimmungen()
+    }, []);
+
+    function aktualisiereStimmungen() {
         axios({
             method: "get",
             url: "http://localhost:8080/stimmungen",
         })
             .then(response => {
                 setStimmungen(response.data.daten)
-                console.log(response.data.daten)
+                console.log(response)
                 setLoading(false)
             })
             .catch(error => {
                 console.log(error)
             })
-    }, []);
+    }
 
+    function messageEmpfangen(message) {
+        setMessage(message)
+        setTimeout(() => {
+            setMessage("")
+        }, 4000)
 
-    function handleChange(){}
+    }
+
+    function erstelleKommentar() {}
+
+    const erstelleKommentarHinzufuegenDurchEntertaste = (e) => {
+        if (e.key === 'Enter') {
+            erstelleKommentar();
+        }
+    }
+
+    function handleChange() {}
 
     if (loading) {
         // Zeige eine Ladeanimation oder Nachricht an, während die Daten geladen werden
@@ -49,21 +69,33 @@ function Stimmungskomponente() {
                     <p className="erstellungsZeit">{stimmungen[stimmungen.length - 1].erstellungszeitalsString}</p>
                     <p className="kommentar">{stimmungen[stimmungen.length - 1].kommentar}</p>
                 </div>
-
             </div>
             <div className="stimmungFooter">
-                <p className="verbleibendeZeit">Aktuell kannst du nur deinen letzten Eintrag bearbeiten - warte bis {stimmungen[stimmungen.length - 1].erstellungszeitalsString
-                } um eine neuen Stimmungseintrag hinzuzufügen.</p>
+                <p className="StimmungErstellenStatus">{message}</p>
                 <div className="smileyContainer">
-                    <Smiley rating="0" url={stimmungImages[0]}/>
-                    <Smiley rating="1" url={stimmungImages[1]}/>
-                    <Smiley rating="2" url={stimmungImages[2]}/>
-                    <Smiley rating="3" url={stimmungImages[3]}/>
-                    <Smiley rating="4" url={stimmungImages[4]}/>
-                    <Smiley rating="5" url={stimmungImages[5]}/>
-                    <Smiley rating="6" url={stimmungImages[6]}/>
+                    <Smiley rating="0" url={stimmungImages[0]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
+                    <Smiley rating="1" url={stimmungImages[1]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
+                    <Smiley rating="2" url={stimmungImages[2]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
+                    <Smiley rating="3" url={stimmungImages[3]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
+                    <Smiley rating="4" url={stimmungImages[4]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
+                    <Smiley rating="5" url={stimmungImages[5]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
+                    <Smiley rating="6" url={stimmungImages[6]} aktualisieren={aktualisiereStimmungen}
+                            messageEmpfangen={messageEmpfangen}/>
                 </div>
-                <input className="kommentarErstellen" type="text" onChange={handleChange} placeholder="Neuen Kommentar eingeben"/>
+                <div className="kommentarErstellen">
+                    <input className="kommentarInput" type="text"
+                           onChange={handleChange}
+                           onKeyDown={erstelleKommentarHinzufuegenDurchEntertaste}
+                           placeholder="Neuen Kommentar eingeben"/>
+                    <button className="kommentarButton"
+                            onClick={erstelleKommentar}></button>
+                </div>
             </div>
         </div>
     );
