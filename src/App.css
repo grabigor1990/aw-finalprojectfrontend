@@ -3,11 +3,14 @@
     height: 100%;
 }
 .Layout {
+    border-radius: 20px;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
     display: grid;
     padding: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 30px #525252;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(15, 1fr);
@@ -31,7 +34,8 @@
 }
 
 .Komponente {
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 20px;
 }
 
 .Profilkomponente {
@@ -53,4 +57,5 @@
 .Stimmungskomponente{
     grid-area: Stimmungskomponente;
     padding: 0.5rem;
+
 }
