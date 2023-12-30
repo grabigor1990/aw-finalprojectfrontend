@@ -1,89 +1,88 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Balsam from './Balsam';
 
-axios.defaults.withCredentials = true;
-axios.defaults.headers['Content-Type'] = 'application/json';
-
 function Balsamkomponente() {
+    axios.defaults.withCredentials = true;
+    axios.defaults.headers['Content-Type'] = 'application/json';
+
     const [balsamListe, setBalsamListe] = useState([]);
     const [neuerBalsam, setNeuerBalsam] = useState('');
 
     useEffect(() => {
-        fetchBalsamListe();
+        aktualisiereBalsamListe();
     }, []);
 
-    const fetchBalsamListe = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/balsame');
-            setBalsamListe(response.data);
-        } catch (error) {
-            console.error('Fehler beim Abrufen der Balsamliste: ', error);
-        }
-    };
+    function aktualisiereBalsamListe() {
+        axios.get("http://localhost:8080/balsame")
+            .then(response => {
+                setBalsamListe(response.data);
+            })
+            .catch(error => {
+                console.error(error.response.data[0]);
+            });
+    }
 
-    const bearbeiteBalsamHinzufuegen = async () => {
-        try {
-            await axios.post('http://localhost:8080/balsam', {bezeichnung: neuerBalsam});
-            setNeuerBalsam('');
-            fetchBalsamListe();
-        } catch (error) {
-            console.error('Fehler beim Hinzufügen des Balsams: ', error);
-        }
-    };
+    function handleChange(event) {
+        setNeuerBalsam(event.target.value);
+    }
 
-    //Funktion, dass auch beim Drücken der Entertaste der Balsam hinzugefügt wird
-    const bearbeiteBalsamHinzufuegenDurchEntertaste = (e) => {
-        if (e.key === 'Enter') {
-            bearbeiteBalsamHinzufuegen();
-        }
-    };
+    function erstelleBalsam() {
+        axios.post("http://localhost:8080/balsam", {
+            bezeichnung: neuerBalsam
+        })
+            .then(() => {
+                aktualisiereBalsamListe();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        setNeuerBalsam("");
+    }
 
-    const bearbeiteBalsamLoeschen = async (balsamId) => {
-        try {
-            await axios.delete(`http://localhost:8080/balsam/${balsamId}`);
-            fetchBalsamListe();
-        } catch (error) {
-            console.error('Fehler beim Löschen des Balsams: ', error);
-        }
-    };
+    function loescheBalsam(balsamId) {
+        axios.delete(`http://localhost:8080/balsam/${balsamId}`)
+            .then(() => {
+                aktualisiereBalsamListe();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
-    const bearbeiteCheckboxAenderung = async (balsamId, checked) => {
-        try {
-            await axios.post(`http://localhost:8080/balsamEintrag/${balsamId}`, {aktiv: checked});
-        } catch (error) {
-            console.error('Fehler beim Aktualisieren des Balsams:', error);
-        }
-    };
+    function toggleAktivitaet(balsamId) {
+        axios.post(`http://localhost:8080/balsamEintrag/${balsamId}`)
+            .then(() => {
+                aktualisiereBalsamListe();
+            })
+            .catch(error => {
+                console.error("Fehler beim Aktualisieren des Balsams: ", error);
+            });
+    }
 
     return (
         <div className="Balsamkomponente Komponente">
             <h2 className="balsamHeader">Dein Balsam für die Seele</h2>
             <div className="balsamContainer">
                 <div className="balsamListe">
-                    {balsamListe.map((balsam) => (
-                        <div key={balsam.balsamId}>
-                            {balsam.name} {/* Hier renderst du den Balsam als Fließtext */}
-                            <Balsam
-                                balsam={balsam}
-                                onDelete={bearbeiteBalsamLoeschen}
-                                onCheckboxChange={bearbeiteCheckboxAenderung}
-                            />
-                        </div>
-                    ))}
+                    {balsamListe ? balsamListe.map((balsam, index) => (
+                        <Balsam
+                            key={index}
+                            balsam={balsam}
+                            toggleAktivitaet={toggleAktivitaet}
+                            loescheBalsam={loescheBalsam}
+                        />
+                    )) : <p>Trage hier deine Balsame ein, die Du tracken möchtest</p>}
                 </div>
-
-                <input className="balsamErstellen"
-                       type="text"
-                       value={neuerBalsam}
-                       onChange={(e) => setNeuerBalsam(e.target.value)}
-                       onKeyDown={bearbeiteBalsamHinzufuegenDurchEntertaste}
-                       placeholder="Neuen Balsam eingeben"
+                <input
+                    className="balsamErstellen"
+                    type="text"
+                    onChange={handleChange}
+                    value={neuerBalsam}
                 />
-                <button className="balsamErstellen" onClick={bearbeiteBalsamHinzufuegen}>Hinzufügen</button>
+                <button className="balsamErstellen" onClick={erstelleBalsam}>Neuen Balsam hinzufügen</button>
             </div>
         </div>
     );
 }
-
 export default Balsamkomponente;
