@@ -1,0 +1,10 @@
+.smiley {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smileyWort {
+    text-align: center;
+}
+

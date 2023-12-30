@@ -76,10 +76,19 @@ function Kryptonitkomponente(props) {
                 <div className="kryptonitenListe">
                     {kryptonite ? kryptonite.map((kryptonit, index) => (
                         <Kryptonit key={index} kryptonitId={kryptonit.kryptonitId} bezeichnung={kryptonit.bezeichnung}
-                                   haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0} loeschFunktion={loescheKryptonit}/>
+                                   haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0}
+                                   loeschFunktion={loescheKryptonit}/>
                     )) : <p>Trage hier die Angewohnheiten ein, die du tracken möchtest.</p>}
                 </div>
-                <input className="kryptonitErstellen" type="text" onChange={handleChange} onKeyDown={bearbeiteKryptonitHinzufuegenDurchEntertaste} value={neuesKryptonit} placeholder="Füge eine neue schlechte Angewohnheit hinzu, die du tracken möchtest"/>
+                <div className="kryptonitErstellen">
+                    <input className="kryptonitInput" type="text"
+                           onChange={handleChange}
+                           onKeyDown={bearbeiteKryptonitHinzufuegenDurchEntertaste}
+                           value={neuesKryptonit}
+                           placeholder="Füge eine neue schlechte Angewohnheit hinzu..."
+                           required/>
+                    <button className="kryptonitButton" onClick={erstelleKryptonit}></button>
+                </div>
             </div>
         </div>
     );

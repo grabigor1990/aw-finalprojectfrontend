@@ -86,8 +86,21 @@ function Balsamkomponente() {
                     onChange={handleChange}
                     onKeyDown={hinzufuegenDesNeuenBalsamsDurchEntertastenklick}
                     value={neuerBalsam}
+                    placeholder="Füge eine neue gute Angewohnheit hinzu..."
                 />
                 <button className="balsamErstellen" onClick={erstelleBalsam}>Neuen Balsam hinzufügen</button>
+                <div className="balsamErstellen">
+                    <input className="balsamInput"
+                           type="text"
+                           onChange={handleChange}
+                           onKeyDown={hinzufuegenDesNeuenBalsamsDurchEntertastenklick}
+                           value={neuerBalsam}
+                           placeholder="Füge eine neue gute Angewohnheit hinzu..."
+                           required
+                    />
+                    <button className="balsamButton" onClick={erstelleBalsam}></button>
+                </div>
+
             </div>
         </div>
     );

@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import './Smiley.css';
 
 function Smiley(props) {
+
+    const [displayText, setDisplayText] = useState(""); // Zustand für den angezeigten Text
+
 
     function handleClick() {
         axios({
@@ -12,16 +16,26 @@ function Smiley(props) {
             },
         })
             .then(response => {
-                console.log(response.data)
+                props.aktualisieren()
+                props.messageEmpfangen(response.data.benachrichtigung)
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
+    function zeigeWort() {
+        setDisplayText("Dein individueller Text"); // Setze den gewünschten Text hier
+    }
+
+    function versteckeWort() {
+        setDisplayText(""); // Leeren Text, wenn die Maus den Bereich verlässt
+    }
+
     return (
-        <div>
-            <img onClick={() => {handleClick()}} className="smileyIcon" src={props.url} alt=""/>
+        <div className="smiley">
+            <img onMouseOver={() => zeigeWort()} onMouseLeave={() => versteckeWort()} onClick={() => {handleClick()}} className="smileyIcon" src={props.url} alt=""/>
+            <span className="smileyWort">Wort</span>
         </div>
     );
 }
