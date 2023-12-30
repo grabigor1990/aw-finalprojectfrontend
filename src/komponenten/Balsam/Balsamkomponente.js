@@ -40,6 +40,12 @@ function Balsamkomponente() {
         setNeuerBalsam("");
     }
 
+    function hinzufuegenDesNeuenBalsamsDurchEntertastenklick(event){
+        if(event.key === 'Enter'){
+            erstelleBalsam();
+        }
+    }
+
     function loescheBalsam(balsamId) {
         axios.delete(`http://localhost:8080/balsam/${balsamId}`)
             .then(() => {
@@ -78,6 +84,7 @@ function Balsamkomponente() {
                     className="balsamErstellen"
                     type="text"
                     onChange={handleChange}
+                    onKeyDown={hinzufuegenDesNeuenBalsamsDurchEntertastenklick}
                     value={neuerBalsam}
                 />
                 <button className="balsamErstellen" onClick={erstelleBalsam}>Neuen Balsam hinzufügen</button>

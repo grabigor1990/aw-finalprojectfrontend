@@ -15,24 +15,46 @@
     gap: 5px;
 }
 
-.balsamListe {
-    max-height: 200px;
-    overflow-y: auto;
-}
-
 .balsamErstellen {
-    margin: 0 1rem;
-    border-radius: 15px;
+     margin: 0 1rem;
+     border-radius: 15px;
+ }
+
+.balsamListe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
 }
 
-.balsam{
-    display: grid;
-    margin: 1rem;
-    justify-content: center;
+.balsamButton{
+    display: flex;
     align-items: center;
-
-    grid-template-columns: 4fr 0.25fr 0.25fr;
-    grid-template-rows: 1fr;
-    grid-template-areas:'balsamBezeichnung checkbox balsamLoeschen';
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1 1 calc(20% - 10px); /*5 Elemente pro Reihe*/
+    width: 100%;
+    position: relative;
+    height: 80px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    text-align: center;
+    padding:50px; /*Platz für den Papierkorb*/
 }
+
+.balsamButton:hover{
+    background-color: lightgray;
+}
+
+.balsamText{
+    flex-grow: 1; /* Den Text innerhalb des Buttons flexibel gestalten */
+    text-align: center;
+    margin-right: 5px;
+}
+
+.papierkorb{
+    cursor: pointer;
+}
+
 

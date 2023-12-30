@@ -25,18 +25,19 @@ function Balsam({ balsam, toggleAktivitaet, loescheBalsam }) {
 
     return (
         <div>
-            <button
-                onClick={behandeleToggle}
-                style={{
-                    backgroundColor: isActive ? 'green' : 'darkred',
-                    color: isActive ? 'white' : 'lightgray',
-                    filter: isClicked ? 'none' : 'grayscale(100%)'
-                }}
+            <button className="balsamButton"
+                    onClick={behandeleToggle}
+                    style={{
+                        backgroundColor: isActive ? 'green' : 'darkred',
+                        color: isActive ? 'white' : 'lightgray',
+                        filter: isClicked ? 'none' : 'grayscale(100%)'
+                    }}
             >
-                {balsam.bezeichnung}
+                <span className="balsamText">{balsam.bezeichnung}</span>
+                <button className="papierkorb" onClick={behandeleLoeschen}>🗑️</button>
             </button>
-            <button onClick={behandeleLoeschen}>🗑️</button>
         </div>
     );
 }
+
 export default Balsam;
