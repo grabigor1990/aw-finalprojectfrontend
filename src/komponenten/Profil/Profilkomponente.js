@@ -1,24 +1,26 @@
 import React from 'react';
-import axios from "axios";
+import SpotifyAPI from "./SpotifyAPI";
+import Neuigkeiten from "./Neuigkeiten";
+import './profilcomponente.css'
+import Profilbild from "./Profilbild";
+
 
 function Profilkomponente(props) {
-/*    axios({
-        method: "get",
-        url: "https://positive-news.p.rapidapi.com/quote-of-the-day",
-        headers: {
-            'X-RapidAPI-Key': '6f9265504amshb57065f677c1428p1712d8jsne7b9db42d84a',
-            'X-RapidAPI-Host': 'positive-news.p.rapidapi.com'
-        }
-    })
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        })*/
     return (
         <div className="Profilkomponente Komponente">
-            <p>Profilkomponente</p>
+            <div className="Profilbild">
+                <Profilbild/>
+            </div>
+            <div className="Neuigkeiten">
+                <Neuigkeiten/>
+            </div>
+            <div className="SpotifyAPI1">
+                <SpotifyAPI/>
+            </div> <div className="SpotifyAPI2">
+                <SpotifyAPI/>
+            </div> <div className="SpotifyAPI3">
+                <SpotifyAPI/>
+            </div>
         </div>
     );
 }
