@@ -2,6 +2,7 @@
     height: auto;
 }
 .kryptonitBody {
+
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4fr 1fr;
@@ -13,7 +14,7 @@
 }
 
 .kryptonitenListe {
-    max-height: 220px;
+    max-height: 300px;
     overflow-y: auto;
 }
 

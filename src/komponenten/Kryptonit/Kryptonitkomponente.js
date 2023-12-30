@@ -63,6 +63,12 @@ function Kryptonitkomponente(props) {
             });
     }
 
+    const bearbeiteKryptonitHinzufuegenDurchEntertaste = (e) => {
+        if (e.key === 'Enter') {
+            erstelleKryptonit();
+        }
+    };
+
     return (
         <div className="Kryptonitkomponente Komponente">
             <h2 className="kryptonitHeader">Schlechte Angewohnheiten</h2>
@@ -73,7 +79,7 @@ function Kryptonitkomponente(props) {
                                    haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0} loeschFunktion={loescheKryptonit}/>
                     )) : <p>Trage hier die Angewohnheiten ein, die du tracken möchtest.</p>}
                 </div>
-                <input className="kryptonitErstellen" type="text" onChange={handleChange} value={neuesKryptonit} placeholder="Füge eine neue schlechte Angewohnheit hinzu, die du tracken möchtest"/>
+                <input className="kryptonitErstellen" type="text" onChange={handleChange} onKeyDown={bearbeiteKryptonitHinzufuegenDurchEntertaste} value={neuesKryptonit} placeholder="Füge eine neue schlechte Angewohnheit hinzu, die du tracken möchtest"/>
             </div>
         </div>
     );
