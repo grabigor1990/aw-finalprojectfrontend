@@ -25,7 +25,24 @@ function Smiley(props) {
     }
 
     function zeigeWort() {
-        setDisplayText("Dein individueller Text"); // Setze den gewünschten Text hier
+        let displayText = "";
+        switch(props.rating){
+            case "0": displayText = "Alles totaler Mist!"
+                break;
+            case "1": displayText = "Weiß gerade nicht weiter..."
+                break;
+            case "2": displayText = "Irgendwie blöd..."
+                break;
+            case "3": displayText = "Normal"
+                break;
+            case "4": displayText = "Läuft!"
+                break;
+            case "5": displayText = "Einfach gut druff!"
+                break;
+            case "6": displayText = "Glücklich!"
+                break;
+        }
+        setDisplayText(displayText); // Setze den gewünschten Text hier
     }
 
     function versteckeWort() {
@@ -35,7 +52,7 @@ function Smiley(props) {
     return (
         <div className="smiley">
             <img onMouseOver={() => zeigeWort()} onMouseLeave={() => versteckeWort()} onClick={() => {handleClick()}} className="smileyIcon" src={props.url} alt=""/>
-            <span className="smileyWort">Wort</span>
+            <span className="smileyWort">{displayText}</span>
         </div>
     );
 }

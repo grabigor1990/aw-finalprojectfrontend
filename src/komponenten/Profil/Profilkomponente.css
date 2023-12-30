@@ -73,6 +73,22 @@ p {
     grid-area: Profilbild;
 }
 
+.aktuellesProfilbild {
+    width: 120px;
+}
+
+.Modalfenster {
+    width: 400px;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    visibility: hidden;
+}
+
+.Avatar {
+    width: 100px;
+}
+
 .Neuigkeiten {
     grid-area: Neuigkeiten;
     max-width: 300px;
@@ -92,7 +108,6 @@ p {
 }
 
 .profilbild{
-    border-radius: 50%;
     width: 70px;
     height: 70px;
     border: 0.5px solid #000;

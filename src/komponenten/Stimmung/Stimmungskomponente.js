@@ -30,7 +30,6 @@ function Stimmungskomponente() {
         })
             .then(response => {
                 setStimmungen(response.data.daten)
-                console.log(response)
                 setLoading(false)
             })
             .catch(error => {
