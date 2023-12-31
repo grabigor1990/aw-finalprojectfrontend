@@ -1,0 +1,28 @@
+.Avatar{
+    grid-area: Profilbild;
+    width: 160px;
+    cursor: pointer;
+}
+
+.Modalfenster {
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 420px;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px grey;
+    gap: 5px;
+    padding: 10px;
+}
+
+.AvatarAuswahlbild {
+    width: 80px;
+    cursor: pointer;
+}
+
+.AvatarAuswahlbild:hover {
+    transform: scale(1.2);
+}

@@ -68,27 +68,6 @@ p {
     padding: 16px;
 }
 
-/* Additional styling for individual components */
-.Profilbild {
-    grid-area: Profilbild;
-}
-
-.aktuellesProfilbild {
-    width: 120px;
-}
-
-.Modalfenster {
-    width: 400px;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    visibility: hidden;
-}
-
-.Avatar {
-    width: 100px;
-}
-
 .Neuigkeiten {
     grid-area: Neuigkeiten;
     max-width: 300px;
@@ -107,17 +86,4 @@ p {
     background-color: #2fc02f;
 }
 
-.profilbild{
-    width: 70px;
-    height: 70px;
-    border: 0.5px solid #000;
-    cursor: pointer;
-    text-align: center;
-    padding-top: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-#tier{
-    max-width: 50px;
-    max-height: 50px;
-}
