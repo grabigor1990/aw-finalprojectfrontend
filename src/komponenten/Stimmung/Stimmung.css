@@ -12,7 +12,7 @@
 }
 
 .stimmungBody {
-    padding: 30px;
+    padding: 20px; /*weniger padding, damit es auch auf mobile first funktioniert*/
     border: 2px solid black;
     border-radius: 40px;
     display: grid;
