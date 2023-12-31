@@ -13,10 +13,14 @@
 
 .balsamListe {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
     max-height: 320px;
     overflow-y: auto;
+}
+
+@media(min-width: 500px) {
+    grid-template-columns: repeat(2,1fr);
 }
 
 .balsamEintrag{
