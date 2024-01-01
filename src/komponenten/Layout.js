@@ -4,10 +4,13 @@ import Balsamkomponente from './Balsam/Balsamkomponente.js'
 import Diagrammkomponente from './Diagramm/Diagrammkomponente.js'
 import Kryptonitkomponente from './Kryptonit/Kryptonitkomponente.js'
 import Stimmungskomponente from './Stimmung/Stimmungskomponente.js'
+import Navbar from "./Navbar/Navbar";
 
 
 function Layout(props) {
     return (
+        <>
+            <Navbar/>
         <div className="Layout">
             <Profilkomponente/>
             <Balsamkomponente/>
@@ -15,6 +18,7 @@ function Layout(props) {
             <Diagrammkomponente/>
             <Stimmungskomponente/>
         </div>
+        </>
     );
 }
 
