@@ -23,6 +23,16 @@
     border: 1px solid black;
 }
 
+@media (max-width: 400px) {
+    .Layout {
+        padding: 10px; /* Verringere den äußeren Abstand für mehr Platz */
+    }
+
+    .Komponente {
+        padding: 0.3rem; /* Verringere den Innenabstand der Komponenten */
+    }
+}
+
 @media (min-width: 1000px) {
     #root{
         padding: 20px 80px;
