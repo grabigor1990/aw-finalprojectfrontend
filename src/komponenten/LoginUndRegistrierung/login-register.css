@@ -64,13 +64,6 @@ form {
     width: 100%;
 }
 
-input, button {
-    padding: 15px;
-    margin-bottom: 15px;
-    width: 60%;
-    border-radius: 20px;
-}
-
 .line {
     border-top: 1px solid #a9a6a6;
     width: 80%;
@@ -78,6 +71,10 @@ input, button {
 
 input {
     border: 1px solid #1da1f2;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 60%;
+    border-radius: 20px;
 }
 
 .login-button {
@@ -85,6 +82,10 @@ input {
     color: white;
     border: none;
     cursor: pointer;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 60%;
+    border-radius: 20px;
 }
 
 .myBtn {
@@ -94,6 +95,10 @@ input {
     cursor: pointer;
     width: 200px;
     margin-top: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    /*width: 60%;*/
+    border-radius: 20px;
 }
 
 .myBtn:hover {
@@ -126,6 +131,10 @@ input {
     color: black;
     border: none;
     cursor: pointer;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 60%;
+    border-radius: 20px;
 }
 
 #geschlecht {
