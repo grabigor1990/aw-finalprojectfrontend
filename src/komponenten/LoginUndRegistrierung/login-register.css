@@ -1,5 +1,5 @@
 body {
-    background: #fff;
+    background: #e6fff5;
     color: #000000;
     padding: 0;
     display: flex;
@@ -16,45 +16,33 @@ body {
     height: 100%;
     flex-direction: column;
     text-align: center;
-    max-width: 60%;
-    max-height: 70%;
+    max-width: 70%;
+    max-height: 80%;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-}
-
-.name {
-    color: #1da1f2;
+    box-shadow: 0 4px 6px #9bc472, 0 12px 20px #9bc472;
+    background-color: #cbf6db;
+    padding: 50px;
 }
 
 .login-container {
+    border: 1px solid #9bc472;
     align-items: center;
-    background-color: #fff;
-    border: none;
+    background-color: #e6fff5;
     box-sizing: border-box;
-    margin: 10px 0 0;
     max-width: 400px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .image {
     max-width: 80%;
     height: auto;
-    /*border-radius: 40px;*/
 }
 
 .title {
-    margin-bottom: 10px;
     text-align: center;
     width: 400px;
-}
-
-.untertitel {
-    background-color: #1877f2;
-    border: none;
-    border-radius: 6px;
-    font-size: 20px;
-    line-height: 48px;
-    padding: 0 16px;
-    width: 332px;
 }
 
 form {
@@ -69,17 +57,35 @@ form {
     width: 80%;
 }
 
-input {
-    border: 1px solid #1da1f2;
+.inputLogin {
+    border: 1px solid #9bc472;
     padding: 15px;
     margin-bottom: 15px;
     width: 60%;
     border-radius: 20px;
 }
 
+h2{
+    margin-bottom: 15px;
+}
+
+.inputLoginModal {
+    border: 1px solid #9bc472;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 20%;
+    border-radius: 20px;
+}
+
+.geschlecht{
+    padding: 15px;
+    width: 20%;
+}
+
 .login-button {
-    background-color: #1da1f2;
+    background-color: #9bc472;
     color: white;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     padding: 15px;
@@ -89,24 +95,28 @@ input {
 }
 
 .myBtn {
-    background-color: #6af66a;
+    background-color: rgb(211, 81, 81);
     color: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
     border: none;
     cursor: pointer;
-    width: 200px;
     margin-top: 10px;
     padding: 15px;
     margin-bottom: 15px;
-    /*width: 60%;*/
+    width: 200px;
     border-radius: 20px;
 }
 
 .myBtn:hover {
-    background-color: #2fc02f;
+    color: white;
+    background-color: rgb(211, 81, 81);
+
 }
 
 .login-button:hover {
-    background-color: #0d8dd8;
+    color: #000;
+    background-color: #cbf6db;
+    border: 1px solid #9bc472;
 }
 
 #error-box-login {
@@ -119,7 +129,8 @@ input {
     inset: 120px;
     text-align: center;
     border: 1px solid rgb(204, 204, 204);
-    background-color: rgba(98, 97, 97, 0.4);
+    box-shadow: 0 4px 6px #9bc472, 0 12px 20px #9bc472;
+    background-color: rgba(203, 246, 219, 1.0);
     overflow: auto;
     border-radius: 50px;
     outline: none;
@@ -127,19 +138,20 @@ input {
 }
 
 .modal-button {
-    background-color: #6af66a;
-    color: black;
-    border: none;
+    background-color: #9bc472;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #5b8f26;
     cursor: pointer;
     padding: 15px;
     margin-bottom: 15px;
-    width: 60%;
+    width: 200px;
     border-radius: 20px;
 }
 
 #geschlecht {
-    width: 30%;
-    height: 25px;
-    border-radius: 8px;
+    width: 20%;
+    height: 45px;
+    border-radius: 20px;
 }
 
