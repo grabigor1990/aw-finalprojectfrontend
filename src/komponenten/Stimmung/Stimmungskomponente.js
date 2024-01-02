@@ -111,7 +111,7 @@ function Stimmungskomponente() {
                 </div>
                 <div className="stimmungsDetails">
                     <p className="erstellungsZeit"></p>
-                    <p className="aktuellerKommentar">{stimmungen[stimmungen.length - 1].kommentar ? stimmungen[stimmungen.length - 1].kommentar : '"Hier könnte dein Kommentar zur aktuellen Stimmung stehen..."'}</p>
+                    <p className="aktuellerKommentar">{stimmungen[stimmungen.length - 1].kommentar ? '"' + stimmungen[stimmungen.length - 1].kommentar + '"' : '"Hier könnte dein Kommentar zur aktuellen Stimmung stehen..."'}</p>
                 </div>
             </div>
             </div>
