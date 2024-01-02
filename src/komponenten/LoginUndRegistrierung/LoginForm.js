@@ -8,6 +8,7 @@ const LoginForm = () => {
     const [passwort, setPasswort] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const openRegisterModal = () => {
         setRegisterModalOpen(true);
@@ -29,6 +30,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
+            setLoading(true);
             const requestBody = {
                 benutzerName: benutzerName,
                 passwort: passwort
@@ -42,6 +44,8 @@ const LoginForm = () => {
             loginRedirect();
         } catch (error) {
             console.error('Fehler während des Logins: ', error);
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -53,8 +57,8 @@ const LoginForm = () => {
     return (
         <div className="container">
             <div className={"title"}>
-                <h1 className={"name"}>Stimmungsbarometer</h1>
-                <img className={"image"} src={require("./MoodTracker.jpeg")} alt="Mood"/>
+                {/*<h1 className={"name"}>Stimmungsbarometer</h1>*/}
+                <img className={"image"} src= 'https://raw.githubusercontent.com/moritzrose/StimmungImages/main/MoodTracker_Logo.png' alt="Mood"/>
                 <h4 className={"text"}>Verfolge deine Stimmung</h4>
             </div>
             <form onSubmit={bearbeiteLoginBefehl} className={"login-container"}>
@@ -76,8 +80,10 @@ const LoginForm = () => {
                 <button
                     type={"submit"}
                     onClick={bearbeiteLoginBefehl}
-                    className={"login-button"}>
-                    Einloggen
+                    className={"login-button"}
+                    disabled={loading}
+                >
+                    {loading ? 'Laden...' : 'Enloggen'}
                 </button>
                 <hr className={"line"}/>
             </form>

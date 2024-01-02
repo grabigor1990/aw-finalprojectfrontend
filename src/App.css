@@ -1,9 +1,7 @@
 #root {
     width: 65%;
     height: 100%;
-    padding: 20px;
 }
-
 .Layout {
     border-radius: 20px;
     box-sizing: border-box;
@@ -32,8 +30,8 @@
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente';
+    border: 1px solid black;
 }
-
 
 .Komponente {
     border: 2px solid black;
@@ -44,25 +42,19 @@
     grid-area: Profilkomponente;
     padding: 0.5rem;
 }
-
-.Balsamkomponente {
+.Balsamkomponente{
     grid-area: Balsamkomponente;
     padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
 }
-
-.Diagrammkomponente {
+.Diagrammkomponente{
     grid-area: Diagrammkomponente;
     padding: 0.5rem;
 }
-
-.Kryptonitkomponente {
+.Kryptonitkomponente{
     grid-area: Kryptonitkomponente;
     padding: 0.5rem;
 }
-
-.Stimmungskomponente {
+.Stimmungskomponente{
     grid-area: Stimmungskomponente;
     padding: 0.5rem;
 
