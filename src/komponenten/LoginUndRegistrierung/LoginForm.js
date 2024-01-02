@@ -57,12 +57,12 @@ const LoginForm = () => {
     return (
         <div className="container">
             <div className={"title"}>
-                {/*<h1 className={"name"}>Stimmungsbarometer</h1>*/}
                 <img className={"image"} src= 'https://raw.githubusercontent.com/moritzrose/StimmungImages/main/MoodTracker_Logo.png' alt="Mood"/>
                 <h4 className={"text"}>Verfolge deine Stimmung</h4>
             </div>
             <form onSubmit={bearbeiteLoginBefehl} className={"login-container"}>
                 <input
+                    className="inputLogin"
                     type="text"
                     name="benutzerName"
                     placeholder="Benutzername"
@@ -70,6 +70,7 @@ const LoginForm = () => {
                     onChange={bearbeiteBenutzerNamenAenderung}
                 />
                 <input
+                    className="inputLogin"
                     type="password"
                     id={"passwort"}
                     name={"passwort"}
@@ -78,12 +79,12 @@ const LoginForm = () => {
                     onChange={bearbeitePasswortAenderung}
                 />
                 <button
+                    className={"login-button"}
                     type={"submit"}
                     onClick={bearbeiteLoginBefehl}
-                    className={"login-button"}
                     disabled={loading}
                 >
-                    {loading ? 'Laden...' : 'Enloggen'}
+                    {loading ? 'Laden...' : 'Einloggen'}
                 </button>
                 <hr className={"line"}/>
             </form>
