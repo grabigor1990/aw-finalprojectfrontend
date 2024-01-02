@@ -4,24 +4,22 @@ import Neuigkeiten from "./Neuigkeiten";
 import './Profilkomponente.css'
 import axios from "axios";
 import Profilbild from "./Profilbild";
+import Begruessung from "./Begruessung";
 
 
 function Profilkomponente() {
 
 
     return (<div className="Profilkomponente Komponente">
+
+        <div className={'Profilbild-Begruessung'}>
             <Profilbild/>
-            <div className="Neuigkeiten">
-                <Neuigkeiten/>
-            </div>
-            {/*           <div className="SpotifyAPI1">
-                <SpotifyAPI/>
-            </div> <div className="SpotifyAPI2">
-                <SpotifyAPI/>
-            </div> <div className="SpotifyAPI3">
-                <SpotifyAPI/>
-            </div>*/}
-        </div>);
+            <Begruessung/>
+        </div>
+        <div className="Neuigkeiten">
+            <Neuigkeiten/>
+        </div>
+    </div>);
 }
 
 export default Profilkomponente;
