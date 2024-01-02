@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Balsam from './Balsam';
 
@@ -8,6 +8,8 @@ function Balsamkomponente() {
 
     const [balsamListe, setBalsamListe] = useState([]);
     const [neuerBalsam, setNeuerBalsam] = useState('');
+    const [zeigePapierkorb, setZeigePapierkorb] = useState(false);
+    const [fehlerMeldung, setFehlerMeldung] = useState("");
 
     useEffect(() => {
         aktualisiereBalsamListe();
@@ -24,20 +26,36 @@ function Balsamkomponente() {
     }
 
     function handleChange(event) {
-        setNeuerBalsam(event.target.value);
+        setFehlerMeldung("");
+        if (event.target.value.length > 40) {
+            setFehlerMeldung("Maximal 40 Zeichen");
+        } else {
+            setNeuerBalsam(event.target.value);
+        }
     }
 
     function erstelleBalsam() {
-        axios.post("http://localhost:8080/balsam", {
-            bezeichnung: neuerBalsam
-        })
-            .then(() => {
-                aktualisiereBalsamListe();
+        if (neuerBalsam.trim() !== '') {
+            axios.post("http://localhost:8080/balsam", {
+                bezeichnung: neuerBalsam
             })
-            .catch(error => {
-                console.error(error);
-            });
-        setNeuerBalsam("");
+                .then(() => {
+                    aktualisiereBalsamListe();
+                })
+                .catch(error => {
+                    setFehlerMeldung(error.response.data.join(". "));
+                });
+            setNeuerBalsam("");
+            setFehlerMeldung("");
+        } else {
+            setFehlerMeldung("Text darf nicht leer sein.");
+        }
+    }
+
+    function hinzufuegenDesNeuenBalsamsDurchEntertastenklick(event) {
+        if (event.key === 'Enter') {
+            erstelleBalsam();
+        }
     }
 
     function loescheBalsam(balsamId) {
@@ -48,6 +66,10 @@ function Balsamkomponente() {
             .catch(error => {
                 console.error(error);
             });
+    }
+
+    function aktivierePapierkorbButton() {
+        setZeigePapierkorb(!zeigePapierkorb);
     }
 
     function toggleAktivitaet(balsamId) {
@@ -71,22 +93,29 @@ function Balsamkomponente() {
                             balsam={balsam}
                             toggleAktivitaet={toggleAktivitaet}
                             loescheBalsam={loescheBalsam}
+                            zeigePapierkorb={zeigePapierkorb}
+                            style={{backgroundColor: balsam.farbe}}
                         />
                     )) : <p>Trage hier deine Balsame ein, die Du tracken möchtest</p>}
                 </div>
-                <div className="balsamErstellen">
-                    <input className="balsamInput"
-                           type="text"
-                           onChange={handleChange}
-                           value={neuerBalsam}
-                           placeholder="Füge eine neue gute Angewohnheit hinzu..."
-                           required
-                    />
-                    <button className="balsamButton" onClick={erstelleBalsam}></button>
+                <div className="balsamEintrag">
+                    <div className="balsamErstellen">
+                        <input className="balsamInput"
+                               type="text"
+                               onChange={handleChange}
+                               onKeyDown={hinzufuegenDesNeuenBalsamsDurchEntertastenklick}
+                               value={neuerBalsam}
+                               placeholder="Füge eine neue gute Angewohnheit hinzu..."
+                               required
+                        />
+                        <button className="balsamButton" onClick={erstelleBalsam}></button>
+                        <button className="balsamButton korb" onClick={aktivierePapierkorbButton}>🗑️</button>
+                    </div>
+                    <div className="fehlerMeldung">{fehlerMeldung && <span>{fehlerMeldung}</span>}</div>
                 </div>
-
             </div>
         </div>
     );
 }
+
 export default Balsamkomponente;

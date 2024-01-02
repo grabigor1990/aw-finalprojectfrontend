@@ -1,0 +1,136 @@
+body {
+    background: #fff;
+    color: #000000;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    text-align: center;
+    max-width: 500px;
+    max-height: 650px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.name {
+    color: #1da1f2;
+}
+
+.login-container {
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    box-sizing: border-box;
+    margin: 10px 0 0;
+    max-width: 400px;
+}
+
+.image {
+    max-width: 50%;
+    height: auto;
+    border-radius: 40px;
+}
+
+.title {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 400px;
+}
+
+.untertitel {
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 332px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+input, button {
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 60%;
+    border-radius: 20px;
+}
+
+.line {
+    border-top: 1px solid #a9a6a6;
+    width: 80%;
+}
+
+input {
+    border: 1px solid #1da1f2;
+}
+
+.login-button {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.myBtn {
+    background-color: #6af66a;
+    color: rgba(0, 0, 0, 0.6);
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.myBtn:hover {
+    background-color: #2fc02f;
+}
+
+.login-button:hover {
+    background-color: #0d8dd8;
+}
+
+#error-box-login {
+    color: red;
+    margin-top: 10px;
+}
+
+.modal {
+    position: fixed;
+    inset: 120px;
+    text-align: center;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgba(98, 97, 97, 0.4);
+    overflow: auto;
+    border-radius: 50px;
+    outline: none;
+    padding: 20px;
+}
+
+.modal-button {
+    background-color: #6af66a;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+#geschlecht {
+    width: 30%;
+    height: 25px;
+    border-radius: 8px;
+}
+

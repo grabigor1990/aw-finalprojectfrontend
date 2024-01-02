@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import './Balsam.css';
 
-function Balsam({ balsam, toggleAktivitaet, loescheBalsam }) {
-    const [isClicked, setIsClicked] = useState(false);
+function Balsam({ balsam, toggleAktivitaet, loescheBalsam, zeigePapierkorb }) {
     const [isActive, setIsActive] = useState(false);
+
 
     useEffect(() => {
         if (balsam.taeglicheEintraege && balsam.taeglicheEintraege.length > 0) {
@@ -15,7 +15,6 @@ function Balsam({ balsam, toggleAktivitaet, loescheBalsam }) {
 
     const behandeleToggle = () => {
         toggleAktivitaet(balsam.balsamId);
-        setIsClicked(true);
         setIsActive(!isActive);
     };
 
@@ -24,19 +23,20 @@ function Balsam({ balsam, toggleAktivitaet, loescheBalsam }) {
     };
 
     return (
-        <div>
-            <button
-                onClick={behandeleToggle}
-                style={{
-                    backgroundColor: isActive ? 'green' : 'darkred',
-                    color: isActive ? 'white' : 'lightgray',
-                    filter: isClicked ? 'none' : 'grayscale(100%)'
-                }}
+        <div className="balsamElement">
+            <button className="balsam"
+                    onClick={behandeleToggle}
+                    style={{
+                        backgroundColor: balsam.farbe,
+                        color: balsam.farbe === 'green' ? 'white' : 'black',
+                    }}
             >
-                {balsam.bezeichnung}
+                <span className="balsamText">{balsam.bezeichnung}</span>
+                {zeigePapierkorb &&(
+                <button className="papierkorb" onClick={behandeleLoeschen}>🗑️</button>)}
             </button>
-            <button onClick={behandeleLoeschen}>🗑️</button>
         </div>
     );
 }
+
 export default Balsam;

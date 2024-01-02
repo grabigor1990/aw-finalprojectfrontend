@@ -1,29 +1,40 @@
+/*####className in der BALSAMKOMPONENTE.js####*/
 .balsamHeader {
     height: auto;
 }
 
 .balsamContainer {
-    display: grid;
-    height: 80%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
-    grid-template-areas:
-        'balsamListe'
-        'balsamListe'
-        'balsamListe'
-        'balsamErstellen';
+    display: flex;
+    flex-direction: column;
     gap: 5px;
+    position: relative;
+    flex-grow: 1;
 }
 
 .balsamListe {
-    max-height: 200px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-height: 320px;
     overflow-y: auto;
 }
 
+@media(min-width: 500px) {
+    grid-template-columns: repeat(2,1fr);
+}
+
+.balsamEintrag{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
 .balsamErstellen {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .balsamInput {
@@ -40,24 +51,70 @@
     height: 40px;
     border-radius: 10px;
     background-image: url("https://raw.githubusercontent.com/moritzrose/StimmungImages/main/plusgr%C3%BCn.png");
-    background-size: cover;
+    background-size: 80%; /* Anpassung der Größe des Hintergrundbilds */
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: white;
     border: none;
+    padding-left: 2px;
+}
+
+.balsamButton.korb{
+    font-size: 20px;
+    background-image: none;
 }
 
 .balsamButton:hover {
     transform: scale(1.2);
     cursor: pointer;
+    background-color: lightgray;
+}
+
+.fehlerMeldung{
+    height: 30px;
+}
+
+/*####className in der BALSAM.js####*/
+
+.balsamElement{
+    position: relative;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 .balsam{
-    display: grid;
-    margin: 1rem;
-    justify-content: center;
-    align-items: center;
-
-    grid-template-columns: 4fr 0.25fr 0.25fr;
-    grid-template-rows: 1fr;
-    grid-template-areas:'balsamBezeichnung checkbox balsamLoeschen';
+    height: 70px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
+
+.balsamText{
+    flex: 1;
+    text-align: center;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px ;
+    word-break: break-word;
+}
+
+.papierkorb{
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+}
+
+.balsamElement:hover .papierkorb{
+    display: block;
+}
