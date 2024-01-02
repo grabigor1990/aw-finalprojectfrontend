@@ -12,104 +12,124 @@ function Diagrammkomponente(props) {
     const [yAchseStimmungen, setYAchseStimmungen] = useState([])
 
     const [kryptonite, setKryptonite] = useState([])
-    const [xAchseKryptonitEintraege, setXAchseKryptonitEintraege] = useState([])
-    const [yAchseKryptonitEintraege, setYAchseKryptonitEintraege] = useState([])
+    const [kryptonitEintraege, setKryptonitEintraege] = useState([{}])
 
     const [balsame, setBalsame] = useState([])
-    const [xAchseBalsamEintraege, setXAchseBalsamEintraege] = useState([])
-    const [yAchseBalsamEintraege, setYAchseBalsamEintraege] = useState([])
-
-    const [loading, setLoading] = useState(true); // Neuer Ladezustand
+    const [balsamEintraege, setBalsamEintraege] = useState([{}])
 
 
-    let firstTime = true;
+    const [loadingStimmungen, setLoadingStimmungen] = useState(true); // Neuer Ladezustand
+    const [loadingKryptonite, setLoadingKryptonite] = useState(true); // Neuer Ladezustand
+    const [loadingBalsame, setLoadingBalsame] = useState(true); // Neuer Ladezustand
+
+
 
     useEffect(() => {
-            axios({
-                method: "get",
-                url: "http://localhost:8080/stimmungen",
+        axios({
+            method: "get",
+            url: "http://localhost:8080/stimmungen",
+        })
+            .then(response => {
+                aktualisiereStimmungen(response.data.daten)
             })
-                .then(response => {
-                    setStimmungen(response.data.daten)
-                    setLoading(false)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-    }, []);
-
-
-    useEffect(() => {
-        if (!loading) {
-            aktualisiereInformationen();// aktualisierteStimmungen direkt verarbeiten, wenn sich was ändert.
-        }
-    }, [stimmungen])
-
-    function aktualisiereInformationen() {
-        const aktualisierteXAchseStimmungen = []
-        const aktualisierteYAchseStimmungen = []
-
-        //Stimmungen aktualisieren
-            stimmungen.map(stimmung => {
-                    aktualisierteXAchseStimmungen.push(stimmung.erstellungszeitalsString)
-                    aktualisierteYAchseStimmungen.push(stimmung.rating);
-                    setXAchseStimmungen(aktualisierteXAchseStimmungen)
-                    setYAchseStimmungen(aktualisierteYAchseStimmungen)
-                })
-        /*//KryptonitEintraege aktualisieren
-
-        const aktualisierteXAchseKryptonitEintraege = []
-        const aktualisierteYAchseKryptonitEintraege = []
-
+            .catch(error => {
+                console.log(error)
+            })
         axios({
             method: "get",
             url: "http://localhost:8080/kryptonite",
         })
             .then(response => {
-                response.data.daten.map(kryptonit => {
-
-                    aktualisierteXAchseKryptonitEintraege.push(kryptonit.taeglicheEintraege)
-                })
-                setKryptonite(aktualisierteXAchseKryptonitEintraege)
-                console.log(aktualisierteXAchseKryptonitEintraege)
-
+                aktualisiereKryptonite(response.data.daten)
             })
             .catch(error => {
-                console.error(error.response.data[0]);
+                console.log(error)
             })
-*/
-        //BalsamEintraege aktualisieren
-
-        const aktualisierteXAchseBalsamEintraege = []
-        const aktualisierteYAchseBalsamEintraege = []
-      /*  axios({
+        axios({
             method: "get",
             url: "http://localhost:8080/balsame",
         })
             .then(response => {
-                response.data.map(balsam => {
-                    aktualisierteXAchseBalsamEintraege.push(balsam.taeglicheEintraege)
-
-                })
-                setXAchseStimmungen(aktualisierteXAchseBalsamEintraege)
-                console.log(aktualisierteXAchseBalsamEintraege)
-
-
+                aktualisiereBalsame(response.data)
             })
             .catch(error => {
-                console.error(error.response.data[0]);
-            })*/
+                console.log(error)
+            })
+    }, []);
+
+
+    function aktualisiereStimmungen(stimmungen){
+        const aktualisierteXAchse = []
+        const aktualisierteYAchse = []
+
+        stimmungen.map(stimmung => {
+            aktualisierteXAchse.push(stimmung.erstellungszeitalsString)
+            aktualisierteYAchse.push(stimmung.rating);
+            setXAchseStimmungen(aktualisierteXAchse)
+            setYAchseStimmungen(aktualisierteYAchse)
+        })
+        setTimeout(()=> setLoadingStimmungen(false), 10)
     }
 
-    if (loading) {
-        // Zeige eine Ladeanimation oder Nachricht an, während die Daten geladen werden
+    function aktualisiereKryptonite(kryptonite) {
+        const aktualisierteEintraege = []
+
+        kryptonite.map(kryptonit => {
+            const temporaereEintraegeX = []
+            const temporaereEintraegeY = []
+            kryptonit.taeglicheEintraege.map(taeglicherEintrag => {
+                temporaereEintraegeX.push(taeglicherEintrag.erstellungszeitalsString)
+                temporaereEintraegeY.push(taeglicherEintrag.haeufigkeit)
+            })
+            aktualisierteEintraege.push(
+                {
+                    bezeichnung: kryptonit.bezeichnung,
+                    taeglicheEintraeX: temporaereEintraegeX,
+                    taeglicheEintraeY: temporaereEintraegeY
+                }
+            )
+        })
+        setKryptonitEintraege(aktualisierteEintraege)
+        console.log(aktualisierteEintraege)
+        setTimeout(()=> setLoadingKryptonite(false), 10)
+        //das TimeOut hier ist notwendig, um diesen kurzen asynchronen Moment des "set..." Befehls zu überbrücken
+        //und wirklich erst danach die loading Variable auf false zu setzen, sonst sind die Daten noch nicht angekommen.
+    }
+
+    function aktualisiereBalsame(balsame) {
+        const aktualisierteEintraege = []
+
+        balsame.map(balsam => {
+            const temporaereEintraegeX = []
+            const temporaereEintraegeY = []
+            balsam.taeglicheEintraege.map(taeglicherEintrag => {
+                temporaereEintraegeX.push(taeglicherEintrag.erstellungszeitalsString)
+                temporaereEintraegeY.push(taeglicherEintrag.aktiv)
+            })
+            aktualisierteEintraege.push(
+                {
+                    bezeichnung: balsam.bezeichnung,
+                    taeglicheEintraeX: temporaereEintraegeX,
+                    taeglicheEintraeY: temporaereEintraegeY
+                }
+            )
+        })
+        setBalsamEintraege(aktualisierteEintraege)
+        console.log(aktualisierteEintraege)
+        setTimeout(()=> setLoadingBalsame(false), 10)
+    }
+
+
+    if (loadingStimmungen) {
+        // Solange die Daten nicht in den useState geladen wurden...
         return <div>Lade ... </div>;
     }
+
     return (
         <div className="Diagrammkomponente Komponente">
             <div className="diagramHeader"></div>
             <div className="diagrammBody">
-                <Diagramm zeitstempel={xAchseStimmungen} ratings={yAchseStimmungen}/>
+                <Diagramm zeitstempel={xAchseStimmungen} stimmungen={yAchseStimmungen}/>
             </div>
         </div>
     );

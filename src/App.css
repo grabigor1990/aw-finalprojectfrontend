@@ -1,5 +1,5 @@
 #root {
-    width: 60%;
+    width: 65%;
     height: 100%;
 }
 .Layout {
@@ -8,10 +8,11 @@
     width: 100%;
     display: grid;
     padding: 20px;
+    justify-content: center;
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 30px #525252;
     gap: 20px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 49% 49%;
     grid-template-rows: repeat(15, 1fr);
     grid-template-areas:
             'Profilkomponente Kryptonitkomponente'

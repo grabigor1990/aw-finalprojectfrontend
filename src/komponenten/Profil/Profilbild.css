@@ -1,6 +1,5 @@
-.Avatar{
-    grid-area: Profilbild;
-    width: 160px;
+.Avatar {
+    width: 150px;
     cursor: pointer;
 }
 

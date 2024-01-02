@@ -105,7 +105,8 @@ function Profilbild(props) {
             {modalAnzeigen && (
                 <div className="Modalfenster">
                     {avatarLinks.map((avatar, index) => (
-                        <img className="AvatarAuswahlbild" src={avatar} key={index} onClick={() => neuerAvatar(avatarNamen[index])} alt=""/>
+                        <img className="AvatarAuswahlbild" src={avatar} key={index}
+                             onClick={() => neuerAvatar(avatarNamen[index])} alt=""/>
                     ))}
                 </div>
             )}

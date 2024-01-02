@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -8,7 +8,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { Chart } from 'react-chartjs-2';
+import {Chart} from 'react-chartjs-2';
 
 
 ChartJS.register(
@@ -19,6 +19,7 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+
 function Diagramm(props) {
 
     const stimmungImages = [
@@ -33,7 +34,7 @@ function Diagramm(props) {
 
     function createGradient(ctx, area) {
         const colorStart = "crimson"
-        const colorNearMid= "orange"
+        const colorNearMid = "orange"
         const colorMid = "yellow"
         const colorNearEnd = "yellowgreen"
         const colorEnd = "lime"
@@ -49,7 +50,7 @@ function Diagramm(props) {
     }
 
     const xAxis = props.zeitstempel
-    const yAxis = props.ratings
+    const yAxis = props.stimmungen
 
     const data = {
         labels: xAxis,
@@ -66,7 +67,6 @@ function Diagramm(props) {
     };
 
     const options = {
-
         layout: {
             padding: {
                 left: 20, // Platz links von der Y-Achse
@@ -114,19 +114,26 @@ function Diagramm(props) {
                         const value = context.parsed.y;
                         let stimmung = "";
                         switch (value) {
-                            case 0: stimmung = "Alles totaler Mist!"
+                            case 0:
+                                stimmung = "Alles totaler Mist!"
                                 break;
-                            case 1: stimmung = "Weiß gerade nicht weiter..."
+                            case 1:
+                                stimmung = "Weiß gerade nicht weiter..."
                                 break;
-                            case 2: stimmung = "Irgendwie blöd..."
+                            case 2:
+                                stimmung = "Irgendwie blöd..."
                                 break;
-                            case 3: stimmung = "Normal"
+                            case 3:
+                                stimmung = "Normal"
                                 break;
-                            case 4: stimmung = "Läuft!"
+                            case 4:
+                                stimmung = "Läuft!"
                                 break;
-                            case 5: stimmung = "Einfach gut druff!"
+                            case 5:
+                                stimmung = "Einfach gut druff!"
                                 break;
-                            case 6: stimmung = "Glücklich!"
+                            case 6:
+                                stimmung = "Glücklich!"
                                 break;
                         }
                         // Hier kannst du die Logik für die Anzeige von benutzerdefinierten Nachrichten basierend auf dem Wert implementieren
@@ -168,9 +175,10 @@ function Diagramm(props) {
     }, [chartRef.current]);
 
 
-
     return (
-        <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}/>
+        <div>
+            <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options} color={"rgb(255, 99, 132)"}/>
+        </div>
     );
 }
 
