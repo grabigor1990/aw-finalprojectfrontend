@@ -48,7 +48,7 @@ function Balsamkomponente() {
             setNeuerBalsam("");
             setFehlerMeldung("");
         } else {
-            setFehlerMeldung("Text darf nicht leer sein.");
+            setFehlerMeldung("Textfeld darf nicht leer sein!");
         }
     }
 
@@ -105,13 +105,13 @@ function Balsamkomponente() {
                                onChange={handleChange}
                                onKeyDown={hinzufuegenDesNeuenBalsamsDurchEntertastenklick}
                                value={neuerBalsam}
-                               placeholder="Füge eine neue gute Angewohnheit hinzu..."
+                               placeholder="Füge gute Angewohnheit hinzu..."
                                required
                         />
                         <button className="balsamButton" onClick={erstelleBalsam}></button>
                         <button className="balsamButton korb" onClick={aktivierePapierkorbButton}>🗑️</button>
                     </div>
-                    <div className="fehlerMeldung">{fehlerMeldung && <span>{fehlerMeldung}</span>}</div>
+                    <div className="fehlerMeldung">{fehlerMeldung && <span>🛑 {fehlerMeldung}</span>}</div>
                 </div>
             </div>
         </div>
