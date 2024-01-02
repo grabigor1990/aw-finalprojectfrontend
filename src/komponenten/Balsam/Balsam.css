@@ -103,6 +103,7 @@
 }
 
 .balsam{
+    cursor: pointer;
     height: 70px;
     border: none;
     border-radius: 10px;

@@ -20,7 +20,7 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('/registrieren', formData);
+            const response = await axios.post('http://localhost:8080/registrieren', formData);
             console.log(response.data);
         } catch (error) {
             console.error('Fehler bei der Registrierung', error);
