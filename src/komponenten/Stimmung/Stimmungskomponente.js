@@ -17,11 +17,17 @@ function Stimmungskomponente() {
 
     const [stimmungen, setStimmungen] = useState([])
     const [message, setMessage] = useState("")
-    const [loading, setLoading] = useState(true); // Neuer Ladezustand
+    const [loadingStimmungen, setLoadingStimmungen] = useState(true); // Neuer Ladezustand
+    const [kommentar, setKommentar] = useState();
+    const [neuerKommentar, setNeuerKommentar] = useState("")
 
     useEffect(() => {
         aktualisiereStimmungen()
     }, []);
+
+    useEffect(() => {
+        //setKommentar()
+    }, [stimmungen]);
 
     function aktualisiereStimmungen() {
         axios({
@@ -30,7 +36,8 @@ function Stimmungskomponente() {
         })
             .then(response => {
                 setStimmungen(response.data.daten)
-                setLoading(false)
+                setKommentar(response.data.daten[response.data.daten.length-1].kommentar)
+                setLoadingStimmungen(false)
             })
             .catch(error => {
                 console.log(error)
@@ -45,7 +52,37 @@ function Stimmungskomponente() {
 
     }
 
-    function erstelleKommentar() {}
+
+    function erstelleKommentar() {
+        axios({
+            method: "put",
+            url: "http://localhost:8080/stimmung/" + stimmungen[stimmungen.length - 1].stimmungId,
+            data: {
+                kommentar: neuerKommentar
+            },
+        })
+            .then(response => {
+                aktualisiereStimmungen()
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        setNeuerKommentar("")
+
+    }
+
+    function zeigeWort(rating) {
+        let displayText = "";
+        switch(rating){
+            case 0: return "Alles totaler Mist!"
+            case 1: return "Weiß gerade nicht weiter..."
+            case 2: return "Irgendwie blöd..."
+            case 3: return "Normal"
+            case 4: return "Läuft!"
+            case 5: return "Einfach gut druff!"
+            case 6: return "Glücklich!"
+        }
+    }
 
     const erstelleKommentarHinzufuegenDurchEntertaste = (e) => {
         if (e.key === 'Enter') {
@@ -53,21 +90,30 @@ function Stimmungskomponente() {
         }
     }
 
-    function handleChange() {}
+    function aktualisiereKommentarfeld(event) {
+        setNeuerKommentar(event.target.value)
+    }
 
-    if (loading) {
+    if (loadingStimmungen) {
         // Zeige eine Ladeanimation oder Nachricht an, während die Daten geladen werden
         return <div>Lade ... </div>;
     }
 
     return (
         <div className="Stimmungskomponente Komponente">
-            <div className="stimmungBody">
-                <img className="aktuellerSmiley" src={stimmungImages[stimmungen[stimmungen.length - 1].rating]} alt=""/>
-                <div className="stimmungsDetails">
-                    <p className="erstellungsZeit">{stimmungen[stimmungen.length - 1].erstellungszeitalsString}</p>
-                    <p className="kommentar">{stimmungen[stimmungen.length - 1].kommentar}</p>
+            <div className="stimmungsBodyContainer">
+            <p><strong>Aktuelle Stimmung ({stimmungen[stimmungen.length - 1].erstellungszeitalsString}):</strong></p>
+            <div className="stimmungsBody">
+                <div className="aktuellerSmileyContainer">
+                    <img className="aktuellerSmiley" src={stimmungImages[stimmungen[stimmungen.length - 1].rating]}
+                         alt=""/>
+                    <p className="aktuellesStimmungsWort">{zeigeWort(stimmungen[stimmungen.length - 1].rating)}</p>
                 </div>
+                <div className="stimmungsDetails">
+                    <p className="erstellungsZeit"></p>
+                    <p className="aktuellerKommentar">{stimmungen[stimmungen.length - 1].kommentar ? '"' + stimmungen[stimmungen.length - 1].kommentar + '"' : '"Hier könnte dein Kommentar zur aktuellen Stimmung stehen..."'}</p>
+                </div>
+            </div>
             </div>
             <div className="stimmungFooter">
                 <p className="StimmungErstellenStatus">{message}</p>
@@ -89,8 +135,9 @@ function Stimmungskomponente() {
                 </div>
                 <div className="kommentarErstellen">
                     <input className="kommentarInput" type="text"
-                           onChange={handleChange}
+                           onChange={aktualisiereKommentarfeld}
                            onKeyDown={erstelleKommentarHinzufuegenDurchEntertaste}
+                           value={neuerKommentar}
                            placeholder="Neuen Kommentar eingeben"/>
                     <button className="kommentarButton"
                             onClick={erstelleKommentar}></button>

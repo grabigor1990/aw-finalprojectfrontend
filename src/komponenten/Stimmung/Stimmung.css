@@ -1,8 +1,7 @@
 .Stimmungskomponente{
-    padding: 20px;
     display: grid;
     grid-template-columns: 1fr ;
-    grid-template-rows: 2fr 4fr;
+    grid-template-rows: auto 4fr;
     grid-template-areas:
             'stimmungBody'
             'stimmungFooter';
@@ -11,21 +10,36 @@
     align-items: center;
 }
 
-.stimmungBody {
+.stimmungsBodyContainer {
     padding: 20px; /*weniger padding, damit es auch auf mobile first funktioniert*/
     border: 2px solid black;
     border-radius: 40px;
+}
+
+.stimmungsBody {
+    padding: 20px;
     display: grid;
     grid-template-columns: 1fr 4fr ;
-    grid-template-rows: 1fr;
     grid-template-areas:
             'aktuellerSmiley kommentar kommentar kommentar kommentar';
     justify-content: center;
     align-items: center;
 }
+
+.aktuellerSmileyContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .aktuellerSmiley{
     width: 120px;
 }
+
+.aktuellesStimmungsWort{
+    text-align: center;
+}
+
 .stimmungsDetails {
     margin-left: 20px;
 }
@@ -34,8 +48,9 @@
     font-size: 0.7rem;
 }
 
-.kommentar {
-    font-weight: bold;
+.aktuellerKommentar {
+    text-align: center;
+    font-size: 1.2rem;
 }
 .stimmungFooter {
     display: flex;
@@ -59,10 +74,6 @@
     padding: 10px;
 }
 
-.smileyIcon {
-    cursor: pointer;
-    width: 100%;
-}
 .smileyIcon:hover {
     transform: scale(1.2);
 }

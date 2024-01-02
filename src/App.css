@@ -1,11 +1,10 @@
 #root {
-    width: 60%;
     height: 100%;
+    width: 65%;
 }
 .Layout {
     border-radius: 20px;
     box-sizing: border-box;
-    width: 100%;
     display: grid;
     padding: 20px;
     justify-content: center;
@@ -13,7 +12,7 @@
     box-shadow: 5px 5px 30px #525252;
     gap: 20px;
     grid-template-columns: 49% 49%;
-    grid-template-rows: repeat(15, 1fr);
+    grid-template-rows: auto;
     grid-template-areas:
             'Profilkomponente Kryptonitkomponente'
             'Profilkomponente Kryptonitkomponente'
@@ -36,26 +35,23 @@
 .Komponente {
     border: 2px solid black;
     border-radius: 20px;
+    box-shadow: 0 1px 10px #525252;
+    padding: 1.5rem;
+
 }
 
 .Profilkomponente {
     grid-area: Profilkomponente;
-    padding: 0.5rem;
 }
 .Balsamkomponente{
     grid-area: Balsamkomponente;
-    padding: 0.5rem;
 }
 .Diagrammkomponente{
     grid-area: Diagrammkomponente;
-    padding: 0.5rem;
 }
 .Kryptonitkomponente{
     grid-area: Kryptonitkomponente;
-    padding: 0.5rem;
 }
 .Stimmungskomponente{
     grid-area: Stimmungskomponente;
-    padding: 0.5rem;
-
 }

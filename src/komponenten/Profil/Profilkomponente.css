@@ -54,18 +54,14 @@ p {
 .Profilkomponente {
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr; /* Added a third row for SpotifyAPI components */
+    grid-template-rows: auto; /* Added a third row for SpotifyAPI components */
     gap: 16px; /* Adjust the gap as needed */
     grid-template-areas:
     'Profilbild Neuigkeiten Neuigkeiten'
     'Profilbild Neuigkeiten Neuigkeiten'
     'SpotifyAPI1 SpotifyAPI2 SpotifyAPI3';
-
-    /* Additional styling for the container */
-    padding: 16px;
 }
 
 .Neuigkeiten {

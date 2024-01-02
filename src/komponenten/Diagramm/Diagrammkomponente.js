@@ -90,7 +90,6 @@ function Diagrammkomponente(props) {
             )
         })
         setKryptonitEintraege(aktualisierteEintraege)
-        console.log(aktualisierteEintraege)
         setTimeout(()=> setLoadingKryptonite(false), 10)
         //das TimeOut hier ist notwendig, um diesen kurzen asynchronen Moment des "set..." Befehls zu überbrücken
         //und wirklich erst danach die loading Variable auf false zu setzen, sonst sind die Daten noch nicht angekommen.
@@ -115,7 +114,6 @@ function Diagrammkomponente(props) {
             )
         })
         setBalsamEintraege(aktualisierteEintraege)
-        console.log(aktualisierteEintraege)
         setTimeout(()=> setLoadingBalsame(false), 10)
     }
 
