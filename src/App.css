@@ -1,6 +1,7 @@
 #root {
     height: 100%;
     width: 65%;
+    font-family: Courier, serif;
 }
 .Layout {
     border-radius: 20px;
