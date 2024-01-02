@@ -25,7 +25,6 @@ function App() {
         const checkStatus = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/stimmungen');
-                console.log(response.status);
                 if (response.status === 200) {
                     setLoggedIn(true);
                 } else {
