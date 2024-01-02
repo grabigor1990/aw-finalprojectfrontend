@@ -1,0 +1,106 @@
+.Stimmungskomponente{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 2fr 4fr;
+    grid-template-areas:
+            'stimmungBody'
+            'stimmungFooter';
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.stimmungBody {
+    padding: 20px; /*weniger padding, damit es auch auf mobile first funktioniert*/
+    border: 2px solid black;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: 1fr 4fr ;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            'aktuellerSmiley kommentar kommentar kommentar kommentar';
+    justify-content: center;
+    align-items: center;
+}
+.aktuellerSmiley{
+    width: 120px;
+}
+.stimmungsDetails {
+    margin-left: 20px;
+}
+
+.erstellungsZeit {
+    font-size: 0.7rem;
+}
+
+.kommentar {
+    font-weight: bold;
+}
+.stimmungFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 40px;
+}
+
+.StimmungErstellenStatus{
+    padding: 0 10px;
+    font-size: 0.7rem;
+    text-align: left;
+}
+
+.smileyContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+
+.smileyIcon {
+    cursor: pointer;
+    width: 100%;
+}
+.smileyIcon:hover {
+    transform: scale(1.2);
+}
+
+.kommentarErstellen {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.kommentarInput {
+    align-self: center;
+    justify-self: center;
+    width: 85%;
+    border-radius: 15px;
+    padding-left: 15px;
+    height: 50px;
+}
+
+.kommentarButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-image: url("https://raw.githubusercontent.com/moritzrose/StimmungImages/main/papierflieger.png");
+    background-size: cover;
+    background-color: white;
+    border: none;
+}
+
+.kommentarButton:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.kommentarInput {
+    align-self: center;
+    width: 80%;
+    border-radius: 15px;
+    padding-left: 15px;
+    height: 30px;
+}

@@ -1,40 +1,42 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from "react";
 import './Balsam.css';
-import axios from "axios";
 
-axios.defaults.withCredentials = true;
-axios.defaults.headers['Content-Type'] = 'application/json';
+function Balsam({ balsam, toggleAktivitaet, loescheBalsam, zeigePapierkorb }) {
+    const [isActive, setIsActive] = useState(false);
 
-function Balsam({balsam, onDelete, onCheckboxChange }) {
-    console.log("Props " + balsam, onDelete, onCheckboxChange)
-
-    const[istAktiv, setIstAktiv] = useState(balsam && balsam.checked !== undefined ? balsam.checked : false);
 
     useEffect(() => {
-        if(balsam && balsam.checked !== undefined){
-            setIstAktiv(balsam.checked);
+        if (balsam.taeglicheEintraege && balsam.taeglicheEintraege.length > 0) {
+            setIsActive(balsam.taeglicheEintraege[balsam.taeglicheEintraege.length - 1].aktiv);
+        } else {
+            setIsActive(false);
         }
     }, [balsam]);
 
-    const bearbeiteCheckbox = () => {
-        const aktualisierterStatus = !istAktiv;
-        setIstAktiv(aktualisierterStatus);
-        onCheckboxChange(balsam.balsamId, aktualisierterStatus);
+    const behandeleToggle = () => {
+        toggleAktivitaet(balsam.balsamId);
+        setIsActive(!isActive);
+    };
+
+    const behandeleLoeschen = () => {
+        loescheBalsam(balsam.balsamId);
     };
 
     return (
-        <div className="balsam">
-            {balsam && (<label className="balsamBezeichnung">
-                {balsam.bezeichnung}
-                <input
-                    className="checkbox"
-                    type="checkbox"
-                    checked={istAktiv}
-                    onChange={bearbeiteCheckbox}
-                />
-            </label>)}
-            <button className="balsamLoeschen" onClick={() => onDelete(balsam.balsamId)}>🗑️</button>
+        <div className="balsamElement">
+            <button className="balsam"
+                    onClick={behandeleToggle}
+                    style={{
+                        backgroundColor: balsam.farbe,
+                        color: balsam.farbe === 'green' ? 'white' : 'black',
+                    }}
+            >
+                <span className="balsamText">{balsam.bezeichnung}</span>
+                {zeigePapierkorb &&(
+                    <button className="papierkorb" onClick={behandeleLoeschen}>🗑️</button>)}
+            </button>
         </div>
     );
 }
+
 export default Balsam;

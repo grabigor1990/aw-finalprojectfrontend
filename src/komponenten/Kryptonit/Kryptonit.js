@@ -11,10 +11,15 @@ axios.defaults.headers['Content-Type'] = 'application/json';
 
 function Kryptonit(props) {
 
-    const [haeufigkeit, setHaeufigkeit] = useState("");
+    const [haeufigkeitsWort, setHaeufigkeitsWort] = useState("");
+    const [haeufigkeit, setHaeufigkeit] = useState(props.haeufigkeit || "0");
+
+    useEffect(() => {
+        zahlZuWort(props.haeufigkeit.toString())
+    }, []);
+
 
     function handleChange(event) {
-        //console.log(haeufigkeit)
 
         axios({
             method: "post",
@@ -29,43 +34,50 @@ function Kryptonit(props) {
             .catch(error => {
                 console.error(error);
             });
-        switch (event.target.value) {
-            case "0":
-                setHaeufigkeit("gar nicht")
-                break;
-            case "1":
-                setHaeufigkeit("sehr wenig")
-                break;
-            case "2":
-                setHaeufigkeit("ein bisschen")
-                break;
-            case "3":
-                setHaeufigkeit("normal")
-                break;
-            case "4":
-                setHaeufigkeit("eher viel")
-                break;
-            case "5":
-                setHaeufigkeit("viel")
-                break;
-            case "6":
-                setHaeufigkeit("sehr viel")
-                break;
-        }
-    }
 
-    function handleClick(){
-
+        setHaeufigkeit(event.target.value)
+        zahlZuWort(event.target.value)
     }
 
     return (
         <div className="kryptonit">
             <p className="kryptonitBezeichnung">{props.bezeichnung}: </p>
-            <input className="slideBar" onChange={handleChange} type="range" min="0" max="6" step="1"/>
-            <span className="kryptonitStatustext">{haeufigkeit}</span>
-
+            <input className="kryptonitSlideBar" onChange={handleChange} type="range" min="0" max="6" step="1"
+                   value={haeufigkeit}/>
+            <span className="kryptonitStatustext">{haeufigkeitsWort}</span>
+            <button className="kryptonitLöschen" onClick={() => {
+                props.loeschFunktion(props.kryptonitId)
+            }}>🗑️
+            </button>
         </div>
     );
+
+    function zahlZuWort(zahl) {
+        switch (zahl) {
+            case "0":
+                setHaeufigkeitsWort("gar nicht")
+                break;
+            case "1":
+                setHaeufigkeitsWort("sehr wenig")
+                break;
+            case "2":
+                setHaeufigkeitsWort("ein bisschen")
+                break;
+            case "3":
+                setHaeufigkeitsWort("normal")
+                break;
+            case "4":
+                setHaeufigkeitsWort("eher viel")
+                break;
+
+            case "5":
+                setHaeufigkeitsWort("viel")
+                break;
+            case "6":
+                setHaeufigkeitsWort("sehr viel")
+                break;
+        }
+    }
 }
 
 export default Kryptonit;
