@@ -1,44 +1,28 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import NeuigkeitenList from "./NeugkeitenData";
+import './Profilkomponente.css';
 
 const Neuigkeiten = () => {
-    const [news, setNews] = useState(null);
+    const [news, setNews] = useState("");
+    const getRandom = () => Math.floor(Math.random() * NeuigkeitenList.length);
 
     useEffect(() => {
-        axios
-            .get("https://newsapi.org/v2/top-headlines?country=de&language=de&apiKey=8993772d15934072bd1c868652c1a191",{
-                withCredentials:false,
-            })
-            .then((response) => {
-                const mischen = shuffleArray(response.data.articles);
-                if(mischen.length > 0) {
-                    setNews(mischen[0]);
-                }
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        selectNews();
     }, []);
 
-    const shuffleArray = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
+    const selectNews = () => {
+        const randomIndex = getRandom();
+        setNews(NeuigkeitenList[randomIndex]);
     };
+    return (
 
-    return(
-        <div>
-            {news &&(
-                <div>
-                <p>{news.title}</p>
-                <p>{news.description}</p>
+        <div className={'news-container'}>
+            <h1 className={'zitate'}>Tageszitat:</h1><br/>
+            <div className={'news'}>
+                <p className={'news-text'}>{news}</p>
             </div>
-            )}
         </div>
-    );
+    )
 };
 
 export default Neuigkeiten;
