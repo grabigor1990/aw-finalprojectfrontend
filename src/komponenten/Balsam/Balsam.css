@@ -1,6 +1,7 @@
 /*####className in der BALSAMKOMPONENTE.js####*/
 .balsamHeader {
     height: auto;
+    margin-bottom: 20px;
 }
 
 .balsamContainer {
@@ -9,17 +10,21 @@
     gap: 5px;
     position: relative;
     flex-grow: 1;
+    justify-content: space-between; /*damit zwischen den Eingaben und dem Eingabefeld Platz ist und das Eingabefeld unten bleibt*/
+    height: 85%; /*damit der Teil die Balsamkomponente ausfüllt und dadurch das Eingabefeld unten erscheint*/
 }
 
 .balsamListe {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     max-height: 320px;
     overflow-y: auto;
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
-@media(min-width: 500px) {
+/*@media(min-width: 500px) {
     .balsamListe {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -33,9 +38,9 @@
 
 @media(min-width: 1000px) {
     .balsamListe {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
-}
+}*/
 
 .balsamEintrag{
     bottom: 0;
@@ -48,6 +53,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 2px;
 }
 
 .balsamInput {
@@ -64,7 +70,7 @@
     height: 40px;
     border-radius: 10px;
     background-image: url("https://raw.githubusercontent.com/moritzrose/StimmungImages/main/plusgr%C3%BCn.png");
-    background-size: 80%; /* Anpassung der Größe des Hintergrundbilds */
+    background-size: 100%; /* Anpassung der Größe des Hintergrundbilds */
     background-repeat: no-repeat;
     background-position: center;
     background-color: white;
@@ -75,6 +81,8 @@
 .balsamButton.korb{
     font-size: 20px;
     background-image: none;
+    height: 60%;
+
 }
 
 .balsamButton:hover {
@@ -99,6 +107,7 @@
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
     box-sizing: border-box;
+    width: 4.5rem;
 }
 
 .balsam{
@@ -109,25 +118,25 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
     width: 100%;
-    text-align: center;
     box-sizing: border-box;
 }
 
 
 .balsamText{
     flex: 1;
-    text-align: center;
     margin-right: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10px ;
-    word-break: break-word;
+    padding: 0 5px ;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .papierkorb{
     display: block;
-    position: absolute;
     top: 5px;
     left: 5px;
     z-index: 1;
