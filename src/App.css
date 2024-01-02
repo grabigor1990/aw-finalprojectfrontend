@@ -1,47 +1,20 @@
 #root {
+    width: 60%;
     height: 100%;
-    padding: 20px;
 }
-
 .Layout {
     border-radius: 20px;
     box-sizing: border-box;
     width: 100%;
     display: grid;
     padding: 20px;
+    justify-content: center;
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 30px #525252;
     gap: 20px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 4fr 5fr 5fr 4fr 6fr;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: repeat(15, 1fr);
     grid-template-areas:
-            'Profilkomponente'
-            'Kryptonitkomponente'
-            'Stimmungskomponente'
-            'Balsamkomponente'
-            'Diagrammkomponente';
-    border: 1px solid black;
-}
-
-@media (max-width: 400px) {
-    .Layout {
-        padding: 10px; /* Verringere den äußeren Abstand für mehr Platz */
-    }
-
-    .Komponente {
-        padding: 0.3rem; /* Verringere den Innenabstand der Komponenten */
-    }
-}
-
-@media (min-width: 1000px) {
-    #root{
-        padding: 20px 80px;
-    }
-
-    .Layout {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(15, 1fr);
-        grid-template-areas:
             'Profilkomponente Kryptonitkomponente'
             'Profilkomponente Kryptonitkomponente'
             'Profilkomponente Kryptonitkomponente'
@@ -57,7 +30,7 @@
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente';
-    }
+    border: 1px solid black;
 }
 
 .Komponente {
@@ -69,25 +42,19 @@
     grid-area: Profilkomponente;
     padding: 0.5rem;
 }
-
-.Balsamkomponente {
+.Balsamkomponente{
     grid-area: Balsamkomponente;
     padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
 }
-
-.Diagrammkomponente {
+.Diagrammkomponente{
     grid-area: Diagrammkomponente;
     padding: 0.5rem;
 }
-
-.Kryptonitkomponente {
+.Kryptonitkomponente{
     grid-area: Kryptonitkomponente;
     padding: 0.5rem;
 }
-
-.Stimmungskomponente {
+.Stimmungskomponente{
     grid-area: Stimmungskomponente;
     padding: 0.5rem;
 
