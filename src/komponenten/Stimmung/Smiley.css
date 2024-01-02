@@ -8,7 +8,12 @@
 .smileyWort {
     position:absolute;
     text-align: center;
-    bottom: -40px;
+    bottom: 0;
     font-size: 0.8rem;
 }
 
+.smileyIcon {
+    cursor: pointer;
+    width: 60%;
+    margin-bottom: 40px;
+}
