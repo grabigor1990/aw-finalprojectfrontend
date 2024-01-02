@@ -19,7 +19,7 @@ const Neuigkeiten = () => {
         <div className={'news-container'}>
             <h1 className={'zitate'}>Tageszitat:</h1><br/>
             <div className={'news'}>
-                <p className={'news-text'}>{news}</p>
+                <p className={'news-text'}><em>{news}</em></p>
             </div>
         </div>
     )
