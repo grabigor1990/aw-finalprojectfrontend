@@ -13,6 +13,43 @@
     justify-content: center;
 }
 
+.kryptonitSlideBar {
+    -webkit-appearance: none;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #8dd253, #ffff80 50%, #ff442c);
+    outline: none; /* Remove outline */
+    border: black 2px solid;
+    justify-self: center;
+}
+
+.kryptonitSlideBar:hover {
+    cursor: pointer;
+
+}
+
+.kryptonitSlideBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to right, #ffffff, #e0e0e0); /* Button gradient */
+    border: 2px solid #000; /* Button border color */
+    border-radius: 50%; /* Button border radius to create a circle */
+    cursor: pointer;
+}
+
+.kryptonitLöschen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .kryptonitenListe {
     max-height: 300px;
     overflow-y: auto;
@@ -53,13 +90,22 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+    border: #ffffff 1px solid;
+    padding: 2px;
+
 
     grid-template-columns: 1fr 2fr 1fr 0.25fr;
     grid-template-rows: 1fr;
     grid-template-areas:
             'kryptonitBezeichnung kryptonitSlideBar kryptonitSlideBar kryptonitStatustext kryptonitLöschen';
 }
+.kryptonit:hover {
+    background-color: #e3e3e3;
+    cursor: pointer;
+    border: #bbbbbb 1px solid
+}
 
 .kryptonitStatustext {
-    text-align: center;
+    justify-self: center;
 }
