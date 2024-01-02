@@ -1,6 +1,5 @@
 import './App.css';
 import Layout from './komponenten/Layout.js'
-import Navbar from "./komponenten/Navbar/Navbar";
 import LoginForm from "./komponenten/LoginUndRegistrierung/LoginForm";
 import axios from "axios";
 import {useEffect, useState} from "react";

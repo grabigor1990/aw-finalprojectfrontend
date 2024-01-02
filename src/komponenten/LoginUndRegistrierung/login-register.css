@@ -36,9 +36,9 @@ body {
 }
 
 .image {
-    max-width: 50%;
+    max-width: 80%;
     height: auto;
-    border-radius: 40px;
+    /*border-radius: 40px;*/
 }
 
 .title {
