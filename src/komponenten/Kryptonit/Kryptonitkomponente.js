@@ -32,24 +32,35 @@ function Kryptonitkomponente(props) {
     }
 
     function handleChange(event) {
-        setNeuesKryptonit(event.target.value)
+        setFehlerMeldung("");
+        if (event.target.value.length > 20) {
+            setFehlerMeldung("Maximal 20 Zeichen");
+        } else {
+            setNeuesKryptonit(event.target.value)
+        }
     }
 
     function erstelleKryptonit() {
-        axios({
-            method: "post",
-            url: "http://localhost:8080/kryptonit",
-            data: {
-                bezeichnung: neuesKryptonit
-            },
-        })
-            .then(() => {
-                aktualisiereKryptonite()
+        if (neuesKryptonit.trim() !== "") {
+            axios({
+                method: "post",
+                url: "http://localhost:8080/kryptonit",
+                data: {
+                    bezeichnung: neuesKryptonit
+                },
             })
-            .catch(error => {
-                console.error(error);
-            });
-        setNeuesKryptonit("");
+                .then(() => {
+                    aktualisiereKryptonite()
+                })
+                .catch(error => {
+                    console.error(error);
+                    setFehlerMeldung(error.response.data.join(". "))
+                });
+            setNeuesKryptonit("");
+            setFehlerMeldung("");
+        } else {
+            setFehlerMeldung("Textfeld darf nicht leer sein!");
+        }
     }
 
     function loescheKryptonit(kryptonitId) {
