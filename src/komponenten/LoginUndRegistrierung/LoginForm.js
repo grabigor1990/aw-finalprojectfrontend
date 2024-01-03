@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './login-register.css';
 import Modal from './RegistrForm';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const LoginForm = () => {
     const [benutzerName, setBenutzerName] = useState('');
@@ -9,6 +12,8 @@ const LoginForm = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [eingeloggteBenutzer, setEingeloggteBenutzer] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const openRegisterModal = () => {
         setRegisterModalOpen(true);
@@ -28,24 +33,35 @@ const LoginForm = () => {
 
     const bearbeiteLoginBefehl = async (e) => {
         e.preventDefault();
-
         try {
             setLoading(true);
             const requestBody = {
                 benutzerName: benutzerName,
                 passwort: passwort
             };
-
             console.log('Request body:', requestBody)
-
             const antwort = await axios.post('http://localhost:8080/einloggen', requestBody);
-
             console.log('Login successful!', antwort.data);
-            loginRedirect();
+            setTimeout(() => {
+                loginRedirect();
+                setLoading(false);
+            },500)
         } catch (error) {
             console.error('Fehler während des Logins: ', error);
-        } finally {
-            setLoading(false)
+            setLoading(false);
+            if (error.response){
+                const status = error.response.status;
+
+                if (status === 406) {
+                    toast.error('Benutzer oder Passwort sind nicht korrekt!',{position: toast.POSITION.BOTTOM_CENTER});
+                } else if (status === 409) {
+                    toast.error('Ein Benutzer ist bereits eingeloggt!',{position: toast.POSITION.BOTTOM_CENTER});
+                }else {
+                    toast.error('Ein unerwarteter Fehler ist aufgetreten.',{position: toast.POSITION.BOTTOM_CENTER});
+                }
+            }else {
+                toast.error('Netzwerkfehler. Bitte versuchen Sie es erneut.',{position: toast.POSITION.BOTTOM_CENTER});
+            }
         }
     };
 
@@ -53,6 +69,19 @@ const LoginForm = () => {
         setIsLoggedIn(true);
         window.location.href = '../Layout.js';
     };
+
+    useEffect(() => {
+        fetch('http://localhost:8080/benutzer',{
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => setEingeloggteBenutzer(data))
+            .catch(error => console.error('Fehler beim Abrufen',error));
+    }, []);
 
     return (
         <div className="container">
@@ -95,6 +124,8 @@ const LoginForm = () => {
                     onRequestClose={closeRegisterModal}
                 />
             </div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            {isLoggedIn && <div>Bereits angemeldet</div>}
         </div>
     );
 };

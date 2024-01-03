@@ -8,12 +8,6 @@
     align-content: stretch;
 }
 
-
-.Neuigkeiten {
-    overflow: scroll;
-
-}
-
 .news-button {
     width: 100px;
     height: 20px;
@@ -29,8 +23,9 @@
 
 .begrussung-text {
     margin-left: 30px;
-    font-size: 50px;
-    color: forestgreen;
+    font-size: 30px;
+    color: #2aa12a;
+    text-align: center;
 }
 
 #namen {
@@ -40,5 +35,6 @@
 
 .news {
     font-size: 20px;
+    font-family: Alegreya Sans,serif;
 }
 
