@@ -1,20 +1,50 @@
 #root {
     height: 100%;
-    width: 65%;
+    /*width: 65%;*//*rausnehmen, da der content hier nicht reinpasst und rechts über den Rand ragt durch body justify-content center*/
+/*    padding: 20px;*/
     font-family: Courier, serif;
 }
 .Layout {
     border-radius: 20px;
     box-sizing: border-box;
     display: grid;
+    margin: 50px 20px 20px 20px;
     padding: 20px;
-    justify-content: center;
     background-color: rgba(242, 205, 57, 0.8);
     box-shadow: 5px 5px 20px rgba(242, 205, 57, 1.0);
     gap: 20px;
-    grid-template-columns: 49% 49%;
-    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 5fr 5fr 4fr;
     grid-template-areas:
+            'Profilkomponente'
+            'Kryptonitkomponente'
+            'Stimmungskomponente'
+            'Balsamkomponente';
+}
+
+@media (min-width: 768px) {
+    .Layout {
+        margin-top: 100px;
+        grid-template-rows: 4fr 5fr 5fr 4fr 6fr;
+        grid-template-areas:
+            'Profilkomponente'
+            'Kryptonitkomponente'
+            'Stimmungskomponente'
+            'Balsamkomponente'
+            'Diagrammkomponente';
+    }
+}
+
+@media (min-width: 1000px) {
+    #root {
+        padding: 20px 80px; /*wieso haben wir dies nochmals gemacht?*/
+        max-width: 1600px;
+    }
+
+    .Layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(15, 1fr);
+        grid-template-areas:
             'Profilkomponente Kryptonitkomponente'
             'Profilkomponente Kryptonitkomponente'
             'Profilkomponente Kryptonitkomponente'
@@ -30,6 +60,7 @@
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente';
+    }
 }
 
 .Komponente {
@@ -46,10 +77,20 @@
 }
 .Balsamkomponente{
     grid-area: Balsamkomponente;
+    display: flex;
+    flex-direction: column;
 }
 .Diagrammkomponente{
     grid-area: Diagrammkomponente;
+    display: none;
 }
+
+@media(min-width: 768px){
+    .Diagrammkomponente{
+        display: block;
+    }
+}
+
 .Kryptonitkomponente{
     grid-area: Kryptonitkomponente;
 }
