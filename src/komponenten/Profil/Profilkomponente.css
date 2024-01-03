@@ -1,85 +1,44 @@
-/*
-.Profilkomponente {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    grid-template-rows: 1fr 1fr 1fr; !* Added a third row for SpotifyAPI components *!
-    gap: 16px; !* Adjust the gap as needed *!
-    grid-template-areas:
-            'Profilbild Neuigkeiten Neugkeiten'
-            'Profilbild Neuigkeiten Neugkeiten'
-            'SpotifyAPI SpotifyAPI SpotifyAPI';
-
-    !* Additional styling for the container *!
-    padding: 16px;
-}
-
-.container {
-    text-align: center;
-}
-
-h4 {
-    color: #1db954;
-}
-
-p {
-    font-size: 1em;
-}
-
-.SpotifyAPI {
-    background-color: rgba(51, 51, 51, 0.82);
-    color: white;
-    padding: 10px 10px;
-    font-size: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-}
-
-.Neuigkeiten {
-    max-width: 150px;
-    max-height: 150px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-*/
-
-
 
 .Profilkomponente {
-    box-sizing: border-box;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto; /* Added a third row for SpotifyAPI components */
-    gap: 16px; /* Adjust the gap as needed */
-    grid-template-areas:
-    'Profilbild Neuigkeiten Neuigkeiten'
-    'Profilbild Neuigkeiten Neuigkeiten'
-    'SpotifyAPI1 SpotifyAPI2 SpotifyAPI3';
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-content: stretch;
 }
 
+
 .Neuigkeiten {
-    grid-area: Neuigkeiten;
-    max-width: 300px;
-    max-height: 150px;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: scroll;
+
 }
 
-#spoti {
-    border-radius: 50%;
-    width: 55px;
-    height: 40px;
-    background-color: #2fc02f;
+.news-button {
+    width: 100px;
+    height: 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #1da1f2;
+    color: white;
+}
+.Profilbild-Begruessung{
+    display: flex;
+    align-items: center;
 }
 
+.begrussung-text {
+    margin-left: 30px;
+    font-size: 50px;
+    color: forestgreen;
+}
+
+#namen {
+    margin-top: 10px;
+    color: black;
+}
+
+.news {
+    font-size: 20px;
+}
 

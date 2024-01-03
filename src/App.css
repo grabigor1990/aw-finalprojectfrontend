@@ -9,7 +9,7 @@
     display: grid;
     padding: 20px;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
+    background-color: #cbf6db;
     box-shadow: 5px 5px 30px #525252;
     gap: 20px;
     grid-template-columns: 49% 49%;
@@ -36,7 +36,8 @@
 .Komponente {
     border: 2px solid black;
     border-radius: 20px;
-    box-shadow: 0 1px 10px #525252;
+    box-shadow: 0 3px 5px #9bc472, 0 8px 16px #9bc472;
+    background-color: #fff;
     padding: 1.5rem;
 
 }

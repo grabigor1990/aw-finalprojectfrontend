@@ -1,28 +1,28 @@
 .navbar {
-    background-color: #ffffff;
+    background-color: #cbf6db;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     color: #fff;
-    /*border: 1px solid black;*/
     padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 
 }
 
 .navbar button {
-    background-color: #1da1f2;
-    color: #fff;
+    background-color: #9BC472;
+    color: #000;
+    font-weight: bold;
     border: none;
     padding: 8px 16px;
     margin: 0 5px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 .navbar button.active {
