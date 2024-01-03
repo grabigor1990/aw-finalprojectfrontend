@@ -92,7 +92,6 @@ function Diagramm(props) {
                 },
                 borderWidth: 10, // Dicke der X-Achse
             },
-
         },
         elements: {
             point: {
@@ -115,10 +114,10 @@ function Diagramm(props) {
                         let stimmung = "";
                         switch (value) {
                             case 0:
-                                stimmung = "Alles totaler Mist!"
+                                stimmung = "Alles Scheiße!"
                                 break;
                             case 1:
-                                stimmung = "Weiß gerade nicht weiter..."
+                                stimmung = "Traurig..."
                                 break;
                             case 2:
                                 stimmung = "Irgendwie blöd..."
