@@ -41,10 +41,12 @@ const LoginForm = () => {
             const antwort = await axios.post('http://localhost:8080/einloggen', requestBody);
 
             console.log('Login successful!', antwort.data);
-            loginRedirect();
+            setTimeout(() => {
+                loginRedirect();
+                setLoading(false);
+            },500)
         } catch (error) {
             console.error('Fehler während des Logins: ', error);
-        } finally {
             setLoading(false)
         }
     };
