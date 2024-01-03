@@ -25,7 +25,7 @@ const Begruessung = () => {
 
     return (
         <div className={'begrussung-text'}>
-            <p>Hallo, <p id={'namen'}>{vorname} !</p></p>
+            <p>Hallo, <span id={'namen'}>{vorname} !</span></p>
         </div>
     );
 };
