@@ -25,6 +25,7 @@
     outline: none; /* Remove outline */
     border: black 2px solid;
     justify-self: center;
+    border-radius: 15px;
 }
 
 .kryptonitSlideBar:hover {

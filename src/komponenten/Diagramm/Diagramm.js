@@ -92,6 +92,7 @@ function Diagramm(props) {
                 },
                 borderWidth: 10, // Dicke der X-Achse
             },
+
         },
         elements: {
             point: {
@@ -111,6 +112,7 @@ function Diagramm(props) {
                 callbacks: {
                     label: function (context) {
                         const value = context.parsed.y;
+                        console.log(context.dataIndex)
                         let stimmung = "";
                         switch (value) {
                             case 0:
@@ -138,11 +140,8 @@ function Diagramm(props) {
                         // Hier kannst du die Logik für die Anzeige von benutzerdefinierten Nachrichten basierend auf dem Wert implementieren
                         return stimmung;
                     },
-                    title: function () {
-                        // Hier kannst du den Tooltip-Titel anpassen
-                        return 'Hier kommt irgendwie noch der Kommentar rein!';
-                    },
                 },
+                displayColors: false,
             },
             legend: {
                 display: false, // Setze diese Eigenschaft auf false, um die Legende zu verstecken
