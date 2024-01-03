@@ -21,11 +21,13 @@
     -webkit-appearance: none;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #8dd253, #ffff80 50%, #ff442c);
+    background: linear-gradient(to right, #5a9f1d, #ffff80 50%, #ff442c);
     outline: none; /* Remove outline */
-    border: black 2px solid;
+    border: #8f8f8f 2px solid;
     justify-self: center;
     border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(152, 152, 152, 0.4);
+
 }
 
 .kryptonitSlideBar:hover {
@@ -39,7 +41,7 @@
     width: 30px;
     height: 30px;
     background: linear-gradient(to right, #ffffff, #e0e0e0); /* Button gradient */
-    border: 2px solid #000; /* Button border color */
+    border: 1px solid #000; /* Button border color */
     border-radius: 50%; /* Button border radius to create a circle */
     cursor: pointer;
 }
