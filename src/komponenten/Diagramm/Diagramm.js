@@ -49,21 +49,119 @@ function Diagramm(props) {
         return gradient;
     }
 
-    const xAxis = props.zeitstempel
-    const yAxis = props.stimmungen
+    function konvertiereXWerte(xAchsenArray) {
+        let konvertiereXAchse = []
+        for (let i = 0; i < xAchsenArray.length; i++) {
+            konvertiereXAchse.push(xAchsenArray[i].split(" ")[0])
+        }
+        return konvertiereXAchse;
+    }
 
-    const data = {
-        labels: xAxis,
-        datasets: [
+    function konvertiereYWerte(DatenArray, XAchse) {
+        const konvertiertesDatenArray = []
+        for (let datensatz of DatenArray) {
+            const konvertiertesYArray = []
+            for (let i = 0; i < XAchse.length; i++) {
+                if (datensatz.taeglicheEintraeX.includes(XAchse[i])) {
+                    const index = datensatz.taeglicheEintraeX.findIndex(element => element === XAchse[i])
+                    if(typeof datensatz.taeglicheEintraeY[index] === 'boolean'){
+                        if (datensatz.taeglicheEintraeY[index] === true) konvertiertesYArray.push(4)
+                        else konvertiertesYArray.push(-1)
+                    } else
+                    {
+                        konvertiertesYArray.push(datensatz.taeglicheEintraeY[index])
+                    }
+                } else {
+                    konvertiertesYArray.push(-1);
+                }
+
+            }
+            konvertiertesDatenArray.push(
+                {
+                    bezeichnung: datensatz.bezeichnung,
+                    taeglicheEintraeX: XAchse,
+                    taeglicheEintraeY: konvertiertesYArray
+                }
+            )
+        }
+        return konvertiertesDatenArray
+    }
+
+    const chartRef = useRef(null);
+    const [chartData, setChartData] = useState({
+        datasets: [],
+    })
+    const [datasets, setDataSets] = useState([{}]);
+
+    useEffect(() => {
+        const chart = chartRef.current;
+
+        if (!chart) {
+            return;
+        }
+
+        setDataSets(erstelleDataSet())
+
+        const chartData = {
+            ...data,
+            datasets: data.datasets.map((dataset,index) => ({
+                ...dataset,
+                hidden: index !==0,
+            })),
+        };
+
+        setChartData(chartData);
+    }, [chartRef.current]);
+
+    function erstelleDataSet() {
+        const datasets = []
+        const xAchseKryptoBalsam = konvertiereXWerte(props.zeitstempel)
+        const yWerteKryptos = konvertiereYWerte(props.kryptonitDaten, xAchseKryptoBalsam)
+        const yWerteBalsame = konvertiereYWerte(props.balsamDaten, xAchseKryptoBalsam)
+
+        datasets.push(
             {
-                label: 'Stimmungsdiagramm',
-                data: yAxis,
-                borderColor: props.color,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                label: 'Stimmung',
+                data: props.stimmungen,
+                backgroundColor: 'rgba(255,226,45,0.7)',
+                borderColor: "rgba(86,86,86,0.4)",
                 lineTension: 0.4,
                 pointHitRadius: 50
-            },
-        ],
+            }
+        );
+
+        for (const dataset of yWerteKryptos){
+            datasets.push(
+                {
+                    label: dataset.bezeichnung,
+                    data: dataset.taeglicheEintraeY,
+                    borderColor: "#cf5f4f",
+                    backgroundColor: '#cf5f4f',
+                    lineTension: 0.1,
+                    pointHitRadius: 10
+                }
+            )
+        }
+
+        for (const dataset of yWerteBalsame){
+            datasets.push(
+                {
+                    label: dataset.bezeichnung,
+                    data: dataset.taeglicheEintraeY,
+                    borderColor: "#9fe265",
+                    backgroundColor: '#9fe265',
+                    lineTension: 0.1,
+                    pointHitRadius: 10
+                }
+            )
+        }
+
+        return datasets;
+    }
+
+    const data = {
+        labels:  props.zeitstempel,
+        datasets: datasets,
     };
 
     const options = {
@@ -85,6 +183,10 @@ function Diagramm(props) {
 
             },
             y: {
+                display: true,
+                ticks: {
+                    display: false
+                },
                 min: -1,
                 max: 7,
                 grid: {
@@ -97,14 +199,16 @@ function Diagramm(props) {
         elements: {
             point: {
                 pointStyle: function (context) {
-                    if (context.parsed && typeof context.parsed.y !== 'undefined') {
-                        const value = context.parsed.y;
-                        const image = new Image(75, 75);  // Erstelle ein Image-Objekt mit der gewünschten Größe
-                        image.src = stimmungImages[value];
-                        return image
-                    }
+                    if (context.datasetIndex === 0) {
+                        if (context.parsed && typeof context.parsed.y !== 'undefined') {
+                            const value = context.parsed.y;
+                            const image = new Image(75, 75);  // Erstelle ein Image-Objekt mit der gewünschten Größe
+                            image.src = stimmungImages[value];
+                            return image
+                        }
+                    } else return 'circle';
                 },
-                radius: 35,
+                radius: 1,
             }
         },
         plugins: {
@@ -112,7 +216,6 @@ function Diagramm(props) {
                 callbacks: {
                     label: function (context) {
                         const value = context.parsed.y;
-                        console.log(context.dataIndex)
                         let stimmung = "";
                         switch (value) {
                             case 0:
@@ -144,40 +247,17 @@ function Diagramm(props) {
                 displayColors: false,
             },
             legend: {
-                display: false, // Setze diese Eigenschaft auf false, um die Legende zu verstecken
+                display: true, // Setze diese Eigenschaft auf false, um die Legende zu verstecken
             }
         },
     };
 
-    const chartRef = useRef(null);
-    const [chartData, setChartData] = useState({
-        datasets: [],
-    })
-
-    useEffect(() => {
-        const chart = chartRef.current;
-
-        if (!chart) {
-            return;
-        }
-
-        const chartData = {
-            ...data,
-            datasets: data.datasets.map(dataset => ({
-                ...dataset,
-                borderColor: createGradient(chart.ctx, chart.chartArea),
-            })),
-        };
-
-        setChartData(chartData);
-    }, [chartRef.current]);
-
-
     return (
         <div>
-            <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options} color={"rgb(255, 99, 132)"}/>
+            <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
+                   color={"rgb(255, 99, 132)"}/>
         </div>
-    );
+    )
 }
 
 export default Diagramm;

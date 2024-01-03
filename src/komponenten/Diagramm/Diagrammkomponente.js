@@ -127,7 +127,7 @@ function Diagrammkomponente(props) {
         <div className="Diagrammkomponente Komponente">
             <div className="diagramHeader"></div>
             <div className="diagrammBody">
-                <Diagramm zeitstempel={xAchseStimmungen} stimmungen={yAchseStimmungen}/>
+                <Diagramm zeitstempel={xAchseStimmungen} stimmungen={yAchseStimmungen} kryptonitDaten={kryptonitEintraege} balsamDaten={balsamEintraege}/>
             </div>
         </div>
     );
