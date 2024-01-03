@@ -33,11 +33,12 @@
 }
 
 .aktuellerSmiley{
-    width: 100px;
+    width: 100%;
 }
 
 .aktuellesStimmungsWort{
     text-align: center;
+    height: 100%;
 }
 
 .stimmungsDetails {
@@ -69,12 +70,12 @@
     align-items: center;
     position: absolute;
     height: 80px;
-    opacity: 0.7;
+    opacity: 0.9;
     background-color: white;
     border: 2px solid black;
     border-radius: 15px;
     padding: 0 10px;
-    font-size: 0.7rem;
+    font-size: 1rem;
     text-align: left;
     z-index: 1;
     word-break: break-word;
