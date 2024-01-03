@@ -49,12 +49,10 @@ function Stimmungskomponente() {
 
     function openModal() {
         setmodalAnzeigen(true)
-        console.log(modalAnzeigen)
     }
 
     function closeModal() {
         setmodalAnzeigen(false)
-        console.log(modalAnzeigen)
     }
 
     function messageEmpfangen(message) {

@@ -112,13 +112,14 @@ function Diagramm(props) {
                 callbacks: {
                     label: function (context) {
                         const value = context.parsed.y;
+                        console.log(context.dataIndex)
                         let stimmung = "";
                         switch (value) {
                             case 0:
-                                stimmung = "Alles totaler Mist!"
+                                stimmung = "Alles Scheiße!"
                                 break;
                             case 1:
-                                stimmung = "Weiß gerade nicht weiter..."
+                                stimmung = "Traurig..."
                                 break;
                             case 2:
                                 stimmung = "Irgendwie blöd..."
@@ -139,11 +140,8 @@ function Diagramm(props) {
                         // Hier kannst du die Logik für die Anzeige von benutzerdefinierten Nachrichten basierend auf dem Wert implementieren
                         return stimmung;
                     },
-                    title: function () {
-                        // Hier kannst du den Tooltip-Titel anpassen
-                        return 'Hier kommt irgendwie noch der Kommentar rein!';
-                    },
                 },
+                displayColors: false,
             },
             legend: {
                 display: false, // Setze diese Eigenschaft auf false, um die Legende zu verstecken
