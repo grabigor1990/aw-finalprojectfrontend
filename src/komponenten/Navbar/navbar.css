@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #cbf6db;
+    background-color: rgba(242, 205, 57, 0.8);
     position: fixed;
     top: 0;
     left: 0;
@@ -10,12 +10,12 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 4px rgba(250, 199, 1, 1.0), 0 8px 16px rgba(250, 199, 1, 1);
 
 }
 
 .navbar button {
-    background-color: #9BC472;
+    background-color: #f8f8e1;
     color: #000;
     font-weight: bold;
     border: none;
@@ -23,6 +23,7 @@
     margin: 0 5px;
     cursor: pointer;
     border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(250, 199, 1), 0 8px 16px rgba(250, 199, 1);
 }
 
 .navbar button.active {
@@ -32,6 +33,10 @@
 .navbar img {
     max-width: 150px;
     margin: 5px;
+    background-color: #f8f8e1;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 3px 5px rgb(250, 199, 1), 0 8px 16px rgb(250, 199, 1);
 }
 
 .container-profilBearbeitung {
@@ -41,8 +46,6 @@
     transform: translate(-50%, -50%);
     text-align: center;
     border: 1px solid rgb(204, 204, 204);
-    box-shadow: 0 4px 6px #9bc472, 0 12px 20px #9bc472;
-    background-color: rgba(203, 246, 219, 1.0);
     overflow: auto;
     border-radius: 50px;
     outline: none;
@@ -52,7 +55,7 @@
 }
 
 .inputBenutzerName {
-    border: 1px solid #9bc472;
+    border: 1px solid rgb(250, 199, 1);
     padding: 15px;
     margin-bottom: 15px;
     width: 60%;
@@ -60,10 +63,10 @@
 }
 
 .bearbeitung-button {
-    background-color: #9bc472;
+    background-color: rgba(242, 205, 57, 0.8);
     color: white;
     font-weight: bold;
-    border: 1px solid #5b8f26;
+    border: 1px solid rgb(250, 199, 1);
     cursor: pointer;
     padding: 15px;
     margin-bottom: 15px;
@@ -73,7 +76,7 @@
 
 .bearbeitung-button:hover {
     color: #000;
-    border: 1px solid #9bc472;
+    border: 1px solid rgb(250, 199, 1);
 }
 
 #geschlecht1 {
