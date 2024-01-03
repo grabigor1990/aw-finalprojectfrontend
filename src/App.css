@@ -10,7 +10,7 @@
     padding: 20px;
     justify-content: center;
     background-color: rgba(242, 205, 57, 0.8);
-    box-shadow: 5px 5px 20px rgba(242, 205, 57, 0.8);
+    box-shadow: 5px 5px 20px rgba(242, 205, 57, 1.0);
     gap: 20px;
     grid-template-columns: 49% 49%;
     grid-template-rows: auto;
@@ -30,11 +30,10 @@
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente';
-    border: 1px solid rgb(250, 199, 1);
 }
 
 .Komponente {
-    border: 2px solid rgb(250, 199, 1);
+    border: 3px solid rgb(250, 199, 1);
     border-radius: 20px;
     box-shadow: 0 3px 5px rgba(242,205,57,1.0), 0 4px 8px rgba(242,205,57,1.0);
     background-color: #fff;

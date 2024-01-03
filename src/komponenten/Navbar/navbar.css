@@ -16,6 +16,7 @@
 
 .navbar button {
     background-color: #f8f8e1;
+    max-width: 180px;
     color: #000;
     font-weight: bold;
     border: none;
@@ -31,12 +32,8 @@
 }
 
 .navbar img {
-    max-width: 150px;
+    max-width: 180px;
     margin: 5px;
-    background-color: #f8f8e1;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 3px 5px rgb(250, 199, 1), 0 8px 16px rgb(250, 199, 1);
 }
 
 .container-profilBearbeitung {

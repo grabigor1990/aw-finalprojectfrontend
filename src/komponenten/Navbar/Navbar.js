@@ -39,6 +39,7 @@ const Navbar = () => {
             />
             <img src= 'https://raw.githubusercontent.com/moritzrose/StimmungImages/main/MoodTracker_Logo.png' alt="Logo"/>
             <button
+                className={'myBtn'}
                 onClick={handleLogout}
                 disabled={loading}
             >
