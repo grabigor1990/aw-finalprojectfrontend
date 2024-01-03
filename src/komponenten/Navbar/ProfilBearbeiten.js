@@ -31,13 +31,13 @@ const ProfilBearbeiten = ({ isOpen, onRequestClose }) => {
             contentLabel="Registrierung"
 
         >
-            <h2>Benutzer name ändern</h2>
+            <h2 className="h2-Modalfenster">Benutzername ändern</h2>
             <form>
                 <input
                     className="inputBenutzerName"
                     type="text"
                     name="benutzerName"
-                    placeholder="Neue Benutzername"
+                    placeholder="Neuer Benutzername"
                     value={formData.benutzerName}
                     onChange={handleInputChange}
                 />
@@ -46,7 +46,7 @@ const ProfilBearbeiten = ({ isOpen, onRequestClose }) => {
                     className="inputBenutzerName"
                     type="text"
                     name="vorname"
-                    placeholder="Neue Vorname"
+                    placeholder="Neuer Vorname"
                     value={formData.vorname}
                     onChange={handleInputChange}
                 />
@@ -54,7 +54,7 @@ const ProfilBearbeiten = ({ isOpen, onRequestClose }) => {
                     className="inputBenutzerName"
                     type="text"
                     name="nachname"
-                    placeholder="Neue Nachname"
+                    placeholder="Neuer Nachname"
                     value={formData.nachname}
                     onChange={handleInputChange}
                 />
