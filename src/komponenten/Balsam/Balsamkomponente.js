@@ -27,8 +27,8 @@ function Balsamkomponente() {
 
     function handleChange(event) {
         setFehlerMeldung("");
-        if (event.target.value.length > 40) {
-            setFehlerMeldung("Maximal 40 Zeichen");
+        if (event.target.value.length > 20) {
+            setFehlerMeldung("Maximal 20 Zeichen");
         } else {
             setNeuerBalsam(event.target.value);
         }

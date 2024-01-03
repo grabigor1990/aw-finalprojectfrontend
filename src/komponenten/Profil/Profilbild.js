@@ -35,6 +35,7 @@ function Profilbild(props) {
         })
             .then(response => {
                 wortzuBild(response.data.animalWord)
+                console.log(response.data.animalWord)
             })
             .catch(error => {
                 console.log(error)
@@ -43,10 +44,7 @@ function Profilbild(props) {
 
     function wortzuBild(avatarBezeichnung) {
         switch (avatarBezeichnung) {
-            case null:
-                setAvatarBezeichnung(avatarLinks[0])
-                break;
-            case "anonym":
+            case null, "", "anonym":
                 setAvatarBezeichnung(avatarLinks[0])
                 break;
             case "tiger":
