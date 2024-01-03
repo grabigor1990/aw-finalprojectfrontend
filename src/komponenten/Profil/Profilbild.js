@@ -35,7 +35,6 @@ function Profilbild(props) {
         })
             .then(response => {
                 wortzuBild(response.data.animalWord)
-                console.log(response.data.animalWord)
             })
             .catch(error => {
                 console.log(error)
