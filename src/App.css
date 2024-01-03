@@ -30,13 +30,13 @@
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente'
             'Diagrammkomponente Diagrammkomponente';
-    border: 1px solid black;
+    border: 1px solid rgb(250, 199, 1);
 }
 
 .Komponente {
-    border: 2px solid black;
+    border: 2px solid rgb(250, 199, 1);
     border-radius: 20px;
-    box-shadow: 0 3px 5px rgb(16, 16, 15), 0 4px 8px rgb(16, 16, 15);
+    box-shadow: 0 3px 5px rgba(242,205,57,1.0), 0 4px 8px rgba(242,205,57,1.0);
     background-color: #fff;
     padding: 1.5rem;
 
