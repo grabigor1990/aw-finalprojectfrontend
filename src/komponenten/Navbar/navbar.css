@@ -38,3 +38,52 @@
     border-radius: 20px;
     box-shadow: 0 3px 5px rgb(16, 16, 15), 0 8px 16px rgb(16, 16, 15);
 }
+
+.container-profilBearbeitung {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: 1px solid rgb(204, 204, 204);
+    box-shadow: 0 4px 6px #9bc472, 0 12px 20px #9bc472;
+    background-color: rgba(203, 246, 219, 1.0);
+    overflow: auto;
+    border-radius: 50px;
+    outline: none;
+    padding: 20px;
+    width: 30%;
+    max-height: 60%;
+}
+
+.inputBenutzerName {
+    border: 1px solid #9bc472;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 60%;
+    border-radius: 20px;
+}
+
+.bearbeitung-button {
+    background-color: #9bc472;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #5b8f26;
+    cursor: pointer;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 60%;
+    border-radius: 20px;
+}
+
+.bearbeitung-button:hover {
+    color: #000;
+    border: 1px solid #9bc472;
+}
+
+#geschlecht1 {
+    width: 60%;
+    height: 45px;
+    padding-left: 15px;
+    border-radius: 20px;
+}

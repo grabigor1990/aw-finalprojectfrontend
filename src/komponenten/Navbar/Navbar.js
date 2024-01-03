@@ -1,9 +1,19 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import "./navbar.css";
+import Modal from "./ProfilBearbeiten";
 
 const Navbar = () => {
     const [loading, setLoading] = useState(false);
+    const [isBearbeitungOffen, setBearbeitungOffen] = useState(false);
+
+    const offenBearbeitung = () => {
+        setBearbeitungOffen(true);
+    }
+
+    const schlossBearbeitung = () => {
+        setBearbeitungOffen(false);
+    }
 
     const handleLogout = async () => {
         try {
@@ -20,12 +30,13 @@ const Navbar = () => {
         }
     };
 
-
     return (
         <div className="navbar">
-
-            <button onClick={() => window.location.href = 'profil-bearbeiten.html'}>Profil bearbeiten</button>
-            {/*<img src="https://cdn.icon-icons.com/icons2/1369/PNG/512/-mood_90670.png" alt="Logo" />*/}
+            <button className={'myBtn'} onClick={offenBearbeitung}>Profil bearbeiten</button>
+            <Modal
+            isOpen={isBearbeitungOffen}
+            onRequestClose={schlossBearbeitung}
+            />
             <img src= 'https://raw.githubusercontent.com/moritzrose/StimmungImages/main/MoodTracker_Logo.png' alt="Logo"/>
             <button
                 onClick={handleLogout}
