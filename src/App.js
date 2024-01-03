@@ -3,6 +3,9 @@ import Layout from './komponenten/Layout.js'
 import LoginForm from "./komponenten/LoginUndRegistrierung/LoginForm";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -57,6 +60,7 @@ function App() {
 
     return (
         <>
+            <ToastContainer/>
             <div>
                 {renderContent()}
             </div>
