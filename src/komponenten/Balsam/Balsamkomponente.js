@@ -84,7 +84,7 @@ function Balsamkomponente() {
 
     return (
         <div className="Balsamkomponente Komponente">
-            <h2 className="balsamHeader">Deine guten Angewohnheiten</h2>
+            <h2 className="balsamHeader">Gute Angewohnheiten</h2>
             <div className="balsamContainer">
                 <div className="balsamListe">
                     {balsamListe ? balsamListe.map((balsam, index) => (
