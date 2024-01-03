@@ -43,7 +43,13 @@ function Profilbild(props) {
 
     function wortzuBild(avatarBezeichnung) {
         switch (avatarBezeichnung) {
-            case null, "", "anonym":
+            case null:
+                setAvatarBezeichnung(avatarLinks[0])
+                break;
+            case "":
+                setAvatarBezeichnung(avatarLinks[0])
+                break;
+            case "anonym":
                 setAvatarBezeichnung(avatarLinks[0])
                 break;
             case "tiger":
