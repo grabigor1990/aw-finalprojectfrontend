@@ -13,10 +13,9 @@ const Navbar = () => {
             console.log("ausgeloggt");
             setTimeout(() =>{
                 window.location.href = '../LoginUndRegistrierung/LoginForm.js';
-            },2000);
+            },500);
         } catch (error) {
             console.error('Fehler beim Ausloggen:', error);
-        }finally {
             setLoading(false);
         }
     };
