@@ -62,6 +62,7 @@
 }
 
 .kryptonitInput {
+    margin: 0;
     align-self: center;
     justify-self: center;
     width: 85%;
@@ -75,7 +76,9 @@
     height: 40px;
     border-radius: 10px;
     background-image: url("https://raw.githubusercontent.com/moritzrose/StimmungImages/main/plusrot.png");
-    background-size: cover;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: white;
     border: none;
 }
@@ -83,6 +86,7 @@
 .kryptonitButton:hover {
     transform: scale(1.2);
     cursor: pointer;
+    background-color: lightgray;
 }
 
 .kryptonit {

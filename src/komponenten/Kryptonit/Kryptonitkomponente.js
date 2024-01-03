@@ -10,6 +10,8 @@ function Kryptonitkomponente(props) {
 
     const [kryptonite, setKryptonite] = useState([]);
     const [neuesKryptonit, setNeuesKryptonit] = useState("");
+    const [fehlerMeldung, setFehlerMeldung] = useState("");
+
 
 
     useEffect(() => {
@@ -89,6 +91,7 @@ function Kryptonitkomponente(props) {
                            required/>
                     <button className="kryptonitButton" onClick={erstelleKryptonit}></button>
                 </div>
+                <div className="fehlerMeldung">{fehlerMeldung && <span>🛑 {fehlerMeldung}</span>}</div>
             </div>
         </div>
     );

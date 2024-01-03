@@ -29,14 +29,16 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
 
     return (
         <Modal
+            className = "modal"
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             contentLabel="Registrierung"
-            className = "modal"
+
         >
             <h2>Neues Konto erstellen</h2>
             <form>
                 <input
+                    className="inputLoginModal"
                     type="text"
                     name="benutzerName"
                     placeholder="Benutzername"
@@ -44,6 +46,7 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
                     onChange={handleInputChange}
                 />
                 <input
+                    className="inputLoginModal"
                     type="password"
                     name="passwort1"
                     placeholder="Passwort"
@@ -51,6 +54,7 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
                     onChange={handleInputChange}
                 />
                 <input
+                    className="inputLoginModal"
                     type="password"
                     name="passwort2"
                     placeholder="Passwort wiederholen"
@@ -58,6 +62,7 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
                     onChange={handleInputChange}
                 />
                 <input
+                    className="inputLoginModal"
                     type="text"
                     name="vorname"
                     placeholder="Vorname"
@@ -65,13 +70,14 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
                     onChange={handleInputChange}
                 />
                 <input
+                    className="inputLoginModal"
                     type="text"
                     name="nachname"
                     placeholder="Nachname"
                     value={formData.nachname}
                     onChange={handleInputChange}
                 />
-                <p>Geschlecht</p>
+                <p className="geschlecht">Geschlecht</p>
                 <select name="geschlecht"
                         id="geschlecht"
                         value={formData.geschlecht}
