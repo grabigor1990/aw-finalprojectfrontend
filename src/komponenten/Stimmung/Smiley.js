@@ -27,9 +27,9 @@ function Smiley(props) {
     function zeigeWort() {
         let displayText = "";
         switch(props.rating){
-            case "0": displayText = "Alles totaler Mist!"
+            case "0": displayText = "Alles Scheiße!"
                 break;
-            case "1": displayText = "Weiß gerade nicht weiter..."
+            case "1": displayText = "Traurig..."
                 break;
             case "2": displayText = "Irgendwie blöd..."
                 break;
