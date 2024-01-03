@@ -3,10 +3,9 @@ body {
   font-family: "Century Gothic", sans-serif;
   color: #000000;
   padding: 0;
-/*  display: flex;
+  display: flex;
   align-items: center;
-  justify-content: center;*/ /*flex doesn't make sense at this point as it only has one child (root)*/
-/*  margin-top: 10%;*/
+  justify-content: center;
 }
 
 *{
