@@ -35,7 +35,7 @@ const RegisterModal = ({ isOpen, onRequestClose }) => {
             contentLabel="Registrierung"
 
         >
-            <h2>Neues Konto erstellen</h2>
+            <h2 className='modalFenster'>Neues Konto erstellen</h2>
             <form>
                 <input
                     className="inputLoginModal"
