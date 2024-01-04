@@ -2,14 +2,10 @@
     height: auto;
 }
 .kryptonitBody {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-            'kryptonitenListe'
-            'kryptonitErstellen';
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     gap: 5px;
-    justify-content: center;
 }
 
 

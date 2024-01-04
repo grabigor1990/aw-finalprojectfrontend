@@ -87,11 +87,12 @@ function Kryptonitkomponente(props) {
             <h2 className="kryptonitHeader">Schlechte Angewohnheiten</h2>
             <div className="kryptonitBody">
                 <div className="kryptonitenListe">
-                    {kryptonite ? kryptonite.map((kryptonit, index) => (
+                    {kryptonite && kryptonite.length > 0 ? (
+                    kryptonite.map((kryptonit, index) => (
                         <Kryptonit key={index} kryptonitId={kryptonit.kryptonitId} bezeichnung={kryptonit.bezeichnung}
                                    haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0}
                                    loeschFunktion={loescheKryptonit}/>
-                    )) : <p>Trage hier die Angewohnheiten ein, die du tracken möchtest.</p>}
+                    ))) : <p>Du trackst aktuell noch keine schlechten Angewohnheiten.</p>}
                 </div>
                 <div className="kryptonitErstellen">
                     <input className="kryptonitInput" type="text"
