@@ -64,34 +64,42 @@
 .Komponente {
     border: 3px solid rgb(250, 199, 1);
     border-radius: 20px;
-    box-shadow: 0 3px 5px rgba(242,205,57,1.0), 0 4px 8px rgba(242,205,57,1.0);
+    box-shadow: 0 3px 5px rgba(242, 205, 57, 1.0), 0 4px 8px rgba(242, 205, 57, 1.0);
     background-color: #fff;
     padding: 1.5rem;
+}
 
+@media (max-width: 400px) {
+    .Komponente {
+        padding: 0.7rem; /*ansonsten gibt es gar keinen gelben Rand bei der iPhoneSE Version*/
+    }
 }
 
 .Profilkomponente {
     grid-area: Profilkomponente;
 }
-.Balsamkomponente{
+
+.Balsamkomponente {
     grid-area: Balsamkomponente;
     display: flex;
     flex-direction: column;
 }
-.Diagrammkomponente{
+
+.Diagrammkomponente {
     grid-area: Diagrammkomponente;
     display: none;
 }
 
-@media(min-width: 768px){
-    .Diagrammkomponente{
+@media (min-width: 768px) {
+    .Diagrammkomponente {
         display: block;
     }
 }
 
-.Kryptonitkomponente{
+.Kryptonitkomponente {
     grid-area: Kryptonitkomponente;
 }
-.Stimmungskomponente{
+
+.Stimmungskomponente {
     grid-area: Stimmungskomponente;
 }
