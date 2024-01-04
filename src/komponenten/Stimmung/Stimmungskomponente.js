@@ -20,15 +20,11 @@ function Stimmungskomponente() {
     const [loadingStimmungen, setLoadingStimmungen] = useState(true); // Neuer Ladezustand
     const [kommentar, setKommentar] = useState();
     const [neuerKommentar, setNeuerKommentar] = useState("")
-    const [modalAnzeigen, setmodalAnzeigen] = useState(false);
+    const [modalAnzeigen, setModalAnzeigen] = useState(false);
 
     useEffect(() => {
         aktualisiereStimmungen()
     }, []);
-
-    useEffect(() => {
-        //setKommentar()
-    }, [stimmungen]);
 
     function aktualisiereStimmungen() {
         axios({
@@ -36,7 +32,8 @@ function Stimmungskomponente() {
             url: "http://localhost:8080/stimmungen",
         })
             .then(response => {
-                setLoadingStimmungen(false)
+                setModalAnzeigen(false)
+                console.log(modalAnzeigen)
                 if (response.data.daten.length !== 0) {
                     setStimmungen(response.data.daten)
                     setKommentar(response.data.daten[response.data.daten.length - 1].kommentar)
@@ -48,11 +45,11 @@ function Stimmungskomponente() {
     }
 
     function openModal() {
-        setmodalAnzeigen(true)
+        setModalAnzeigen(true)
     }
 
     function closeModal() {
-        setmodalAnzeigen(false)
+        setModalAnzeigen(false)
     }
 
     function messageEmpfangen(message) {
@@ -121,7 +118,9 @@ function Stimmungskomponente() {
                 <p><strong>Noch keine Stimmung eingetragen.</strong></p>
             </div>
             <div className="stimmungFooter">
-                <p className="StimmungErstellenStatus">{message}</p>
+                {modalAnzeigen && (
+                    <p className="StimmungErstellenStatus">{message}</p>
+                )}
                 <div className="smileyContainer">
                     <Smiley rating="0" url={stimmungImages[0]} aktualisieren={aktualisiereStimmungen}
                             messageEmpfangen={messageEmpfangen}/>
