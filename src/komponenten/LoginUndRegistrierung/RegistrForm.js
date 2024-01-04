@@ -57,7 +57,9 @@ const RegisterModal = ({isOpen, onRequestClose}) => {
             const response = await axios.post('http://localhost:8080/registrieren', formData);
             console.log(response.data);
             setSuccessMessage('Erfolgreich registriert!');
-            onRequestClose();
+            setTimeout(() =>{
+                onRequestClose();
+            },2000);
         } catch (error) {
             console.error('Fehler bei der Registrierung', error);
             setErrorMessage('Fehler bei der Registrierung');
