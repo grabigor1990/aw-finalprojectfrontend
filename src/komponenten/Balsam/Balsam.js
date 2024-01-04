@@ -29,7 +29,7 @@ function Balsam({ balsam, toggleAktivitaet, loescheBalsam, zeigePapierkorb }) {
                     style={{
                         backgroundColor: balsam.farbe,
                         color: balsam.farbe === '#9FE265' ? 'white' : 'black',
-                        border: balsam.farbe === 'gray' ? '2px solid darkgray' : `2px solid ${isActive ? '#5a9f1d' : '#a63222'}`
+                        border: balsam.farbe === 'gray' ? '2px solid black' : `2px solid ${isActive ? '#5a9f1d' : '#a63222'}`
                     }}
             >
                 <span className="balsamText">{balsam.bezeichnung}</span>

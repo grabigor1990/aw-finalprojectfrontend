@@ -62,13 +62,12 @@ function Diagramm(props) {
         for (let datensatz of DatenArray) {
             const konvertiertesYArray = []
             for (let i = 0; i < XAchse.length; i++) {
-                if (datensatz.taeglicheEintraeX.includes(XAchse[i])) {
+                if (datensatz.taeglicheEintraeX?.includes(XAchse[i])) {
                     const index = datensatz.taeglicheEintraeX.findIndex(element => element === XAchse[i])
-                    if(typeof datensatz.taeglicheEintraeY[index] === 'boolean'){
+                    if (typeof datensatz.taeglicheEintraeY[index] === 'boolean') {
                         if (datensatz.taeglicheEintraeY[index] === true) konvertiertesYArray.push(4)
                         else konvertiertesYArray.push(-1)
-                    } else
-                    {
+                    } else {
                         konvertiertesYArray.push(datensatz.taeglicheEintraeY[index])
                     }
                 } else {
@@ -104,9 +103,9 @@ function Diagramm(props) {
 
         const chartData = {
             ...data,
-            datasets: data.datasets.map((dataset,index) => ({
+            datasets: data.datasets.map((dataset, index) => ({
                 ...dataset,
-                hidden: index !==0,
+                hidden: index !== 0,
             })),
         };
 
@@ -130,7 +129,7 @@ function Diagramm(props) {
             }
         );
 
-        for (const dataset of yWerteKryptos){
+        for (const dataset of yWerteKryptos) {
             datasets.push(
                 {
                     label: dataset.bezeichnung,
@@ -143,7 +142,7 @@ function Diagramm(props) {
             )
         }
 
-        for (const dataset of yWerteBalsame){
+        for (const dataset of yWerteBalsame) {
             datasets.push(
                 {
                     label: dataset.bezeichnung,
@@ -160,7 +159,7 @@ function Diagramm(props) {
     }
 
     const data = {
-        labels:  props.zeitstempel,
+        labels: props.zeitstempel,
         datasets: datasets,
     };
 
