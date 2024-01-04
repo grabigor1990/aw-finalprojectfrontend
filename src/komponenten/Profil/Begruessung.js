@@ -21,11 +21,11 @@ const Begruessung = () => {
     if(!eingeloggteBenutzer){
         return <div>Benutzer nicht Eingeloggt</div>
     }
-    const {vorname, nachname} = eingeloggteBenutzer;
+    const {vorname} = eingeloggteBenutzer;
 
     return (
         <div className={'begrussung-text'}>
-            <p>Hallo, <span id={'namen'}>{vorname} !</span></p>
+            <p>Hallo, <br/><span id={'namen'}>{vorname}!</span></p>
         </div>
     );
 };
