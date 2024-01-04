@@ -22,6 +22,10 @@ ChartJS.register(
 
 function Diagramm(props) {
 
+    const [stimmungErstellt, setStimmungErstellt] = useState(false)
+    const [kryptoErstellt, setKryptoErstellt] = useState(false)
+    const [balsamErstellt, setBalsamErstellt] = useState(false)
+
     const stimmungImages = [
         "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/0.png",
         "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/1.png",
@@ -98,7 +102,6 @@ function Diagramm(props) {
         if (!chart) {
             return;
         }
-
         setDataSets(erstelleDataSet())
 
         const chartData = {
@@ -118,6 +121,7 @@ function Diagramm(props) {
         const yWerteKryptos = konvertiereYWerte(props.kryptonitDaten, xAchseKryptoBalsam)
         const yWerteBalsame = konvertiereYWerte(props.balsamDaten, xAchseKryptoBalsam)
 
+        if (props.kryptonitDaten.length !== 0 && props.balsamDaten.length !== 0) {
         datasets.push(
             {
                 label: 'Stimmung',
@@ -143,6 +147,8 @@ function Diagramm(props) {
                 )
             }
         }
+        setKryptoErstellt(true)
+
         if (yWerteBalsame.length !== 0) {
             for (const dataset of yWerteBalsame) {
                 datasets.push(
@@ -155,10 +161,13 @@ function Diagramm(props) {
                         pointHitRadius: 10
                     }
                 )
+
             }
         }
+        setBalsamErstellt(true)
 
         return datasets;
+    }
     }
 
     const data = {
@@ -258,13 +267,12 @@ function Diagramm(props) {
         padding: 0,
         margin: 0
     }
-
-    return (
-        <div>
-            <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
-                   color={"rgb(255, 99, 132)"} style={style}/>
-        </div>
-    )
+        return (
+            <div>
+                <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
+                       color={"rgb(255, 99, 132)"} style={style}/>
+            </div>
+        )
 }
 
 export default Diagramm;
