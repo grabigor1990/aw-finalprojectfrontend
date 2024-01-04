@@ -1,7 +1,5 @@
 #root {
     height: 100%;
-    /*width: 65%;*//*rausnehmen, da der content hier nicht reinpasst und rechts über den Rand ragt durch body justify-content center*/
-/*    padding: 20px;*/
     font-family: Courier, serif;
 }
 .Layout {
@@ -69,7 +67,12 @@
     box-shadow: 0 3px 5px rgba(242,205,57,1.0), 0 4px 8px rgba(242,205,57,1.0);
     background-color: #fff;
     padding: 1.5rem;
+}
 
+@media (max-width: 400px) {
+    .Komponente {
+        padding: 0.7rem; /*ansonsten gibt es gar keinen gelben Rand bei der iPhoneSE Version*/
+    }
 }
 
 .Profilkomponente {
@@ -93,7 +96,10 @@
 
 .Kryptonitkomponente{
     grid-area: Kryptonitkomponente;
+    display: flex;
+    flex-direction: column;
 }
+
 .Stimmungskomponente{
     grid-area: Stimmungskomponente;
 }
