@@ -11,7 +11,6 @@
     position: relative;
     flex-grow: 1;
     justify-content: space-between; /*damit zwischen den Eingaben und dem Eingabefeld Platz ist und das Eingabefeld unten bleibt*/
-    height: 85%; /*damit der Teil die Balsamkomponente ausfüllt und dadurch das Eingabefeld unten erscheint*/
 }
 
 .balsamListe {
@@ -23,24 +22,6 @@
     margin-bottom: 20px;
     justify-content: center;
 }
-
-/*@media(min-width: 500px) {
-    .balsamListe {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(min-width: 800px) {
-    .balsamListe {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media(min-width: 1000px) {
-    .balsamListe {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}*/
 
 .balsamEintrag{
     bottom: 0;
@@ -108,7 +89,7 @@
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
     box-sizing: border-box;
-    width: 4.5rem;
+    width: 5rem;
 }
 
 .balsam{
@@ -124,16 +105,7 @@
 
 
 .balsamText{
-    flex: 1;
-    margin-right: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 5px ;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    word-break: break-all;
     font-family: Courier, serif;
 }
 

@@ -2,7 +2,6 @@
     height: auto;
 }
 .kryptonitBody {
-
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -12,6 +11,8 @@
     gap: 5px;
     justify-content: center;
 }
+
+
 
 .kryptonitBezeichnung{
     word-break: break-word;
@@ -96,20 +97,34 @@
     background-color: lightgray;
 }
 
+
 .kryptonit {
-    margin: 1rem;
-    display: grid;
+    margin: 1rem 0;
+/*    display: grid;*/
+    display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
     border: #ffffff 1px solid;
     padding: 2px;
-
-
-    grid-template-columns: 1fr 2fr 1fr 0.25fr;
+/*Grid rausgenommen, da es bei kleinen Bildschirmen keinen Platz gibt und alles umbricht*/
+/*    grid-template-columns: 1fr 2fr 1fr 0.25fr;
     grid-template-rows: 1fr;
     grid-template-areas:
+            'kryptonitBezeichnung kryptonitSlideBar kryptonitSlideBar kryptonitStatustext kryptonitLöschen';*/
+}
+
+
+@media(min-width: 768px) {
+    .kryptonit {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr 0.25fr;
+        gap: 4px;
+        grid-template-rows: 1fr;
+        grid-template-areas:
             'kryptonitBezeichnung kryptonitSlideBar kryptonitSlideBar kryptonitStatustext kryptonitLöschen';
+    }
 }
 
 .kryptonit:hover {
@@ -119,5 +134,5 @@
 }
 
 .kryptonitStatustext {
-    justify-self: center;
+    justify-self: left;
 }

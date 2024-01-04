@@ -1,149 +1,165 @@
 .container {
     display: flex;
-    margin: auto;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    flex-direction: column;
-    text-align: center;
-    max-width: 60%;
-    max-height: 50%;
-    border-radius: 40px;
-    box-shadow: 0 4px 6px #9bc472, 0 12px 20px #9bc472;
-    background-color: #cbf6db;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.name {
-    color: #1da1f2;
-}
-
-.login-container {
-    border: 1px solid #9bc472;
-    align-items: center;
-    background-color: #e6fff5;
-    box-sizing: border-box;
-    max-width: 400px;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.image {
-    max-width: 80%;
-    height: auto;
-}
-
-.title {
-    text-align: center;
-    width: 400px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
-}
-
-.line {
-    border-top: 1px solid #a9a6a6;
-    width: 80%;
-}
-
-.inputLogin {
-    border: 1px solid #9bc472;
-    padding: 15px;
-    margin-bottom: 15px;
-    width: 60%;
-    border-radius: 20px;
-}
-
-h2{
-    margin-bottom: 15px;
-}
-
-.inputLoginModal {
-    border: 1px solid #9bc472;
-    padding: 15px;
-    margin-bottom: 15px;
-    width: 60%;
-    border-radius: 20px;
-}
-
-.geschlecht{
-    padding: 15px;
-    width: 20%;
-}
-
-.login-button {
-    background-color: #9bc472;
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    padding: 15px;
-    margin-bottom: 15px;
-    width: 60%;
-    border-radius: 20px;
-}
-
-.myBtn {
-    background-color: rgb(211, 81, 81);
-    color: rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    width: 200px;
-    margin-top: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-    /*width: 60%;*/
-    border-radius: 20px;
-}
-
-.myBtn:hover {
-    color: white;
-    background-color: rgb(211, 81, 81);
-
-}
-
-.login-button:hover {
-    color: #000;
-    background-color: #cbf6db;
-    border: 1px solid #9bc472;
-}
-
-#error-box-login {
-    color: red;
-    margin-top: 10px;
-}
-
-.modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    border: 1px solid rgb(204, 204, 204);
-    box-shadow: 0 4px 6px #9bc472, 0 12px 20px #9bc472;
-    background-color: rgba(203, 246, 219, 1.0);
-    overflow: auto;
-    border-radius: 50px;
-    outline: none;
+    height: 100vh; /*füllt bei kleineren Bildschirmen den ganzen ganzen Hintergrund*/
     padding: 20px;
-    width: 30%;
-    max-height: 60%;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(242, 205, 57, 1.0), 0 12px 20px rgb(242, 205, 57, 1.0);
+    background-color: rgba(242, 205, 57, 0.8);
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: unset;
+        height: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 40px;
+        }
+    }
+
+    .login-container {
+        border: 1px solid rgba(242, 205, 57, 0.8);
+        align-items: center;
+        background-color: #f8f8e1;
+        box-sizing: border-box;
+        max-width: 400px;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .image {
+        max-width: 80%;
+        height: auto;
+    }
+
+    .title {
+        text-align: center;
+        width: 400px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .line {
+        border-top: 1px solid #a9a6a6;
+        width: 80%;
+    }
+
+    .inputLogin {
+        border: 1px solid rgba(242, 205, 57, 1.0);
+        padding: 15px;
+        margin-bottom: 15px;
+        width: 60%;
+        border-radius: 20px;
+    }
+
+    .modalFenster {
+        margin-bottom: 15px;
+    }
+
+    .inputLoginModal {
+        border: 1px solid rgba(242, 205, 57, 1);
+        padding: 15px;
+        margin-bottom: 15px;
+        width: 60%;
+        border-radius: 20px;
+    }
+
+    .geschlecht {
+        padding: 15px;
+    }
+
+    .login-button {
+        font-weight: bold;
+        cursor: pointer;
+        padding: 15px;
+        margin-bottom: 15px;
+        width: 60%;
+        border-radius: 20px;
+
+        color: #fff;
+        background-color: rgba(242, 205, 57, 1.0);
+        border: 1px solid #f8f8e1;
+    }
+
+    .myBtn {
+        background-color: #f8f8e1;
+        color: #000;
+        font-weight: bold;
+        border: 1px solid rgba(242, 205, 57, 1.0);
+        cursor: pointer;
+        width: 200px;
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 20px;
+    }
+
+
+    .myBtn:hover {
+        color: white;
+        background-color: rgba(224, 57, 57, 0.9);
+
+    }
+
+    .login-button:hover {
+        background-color: #f8f8e1;
+        border: 1px solid rgb(250, 199, 1);
+        box-shadow: 0 4px 6px rgb(242, 205, 57, 1.0), 0 12px 20px rgb(242, 205, 57, 1.0);
+        font-weight: bold;
+        color: #000;
+    }
+
+    #error-box-login {
+        color: rgba(224, 57, 57, 0.9);
+        margin-top: 10px;
+    }
+
+    .modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        border: 1px solid rgb(204, 204, 204);
+        box-shadow: 0 4px 6px rgb(242, 205, 57, 1.0), 0 12px 20px rgb(242, 205, 57, 1.0);
+        background-color: rgba(242, 205, 57, 1.0);
+        overflow: auto;
+        border-radius: 50px;
+        outline: none;
+        padding: 40px;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /*width und height für größere Bildschirme ändern.*/
+
+@media (min-width: 600px) {
+    .modal {
+        width: 100%;
+        max-width: 600px;
+        max-height: 600px;
+    }
 }
 
 .modal-button {
-    background-color: #9bc472;
-    color: white;
+    background-color: #f8f8e1;
+    color: #000;
     font-weight: bold;
-    border: 1px solid #5b8f26;
+    border: 1px solid rgb(242, 205, 57, 1.0);
     cursor: pointer;
     padding: 15px;
     margin-bottom: 15px;
@@ -151,15 +167,14 @@ h2{
     border-radius: 20px;
 }
 
-.modal-button:hover{
+.modal-button:hover {
     color: #000;
-    border: 1px solid #9bc472;
+    box-shadow: 0 4px 6px rgb(250, 199, 1), 0 12px 20px rgb(250, 199, 1);
 }
 
 #geschlecht {
-    width: 30%;
     height: 45px;
-    padding-left: 15px;
+    padding: 5px;
     border-radius: 20px;
 }
 
