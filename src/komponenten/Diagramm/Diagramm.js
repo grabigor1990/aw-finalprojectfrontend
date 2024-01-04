@@ -129,30 +129,33 @@ function Diagramm(props) {
             }
         );
 
-        for (const dataset of yWerteKryptos) {
-            datasets.push(
-                {
-                    label: dataset.bezeichnung,
-                    data: dataset.taeglicheEintraeY,
-                    borderColor: "#cf5f4f",
-                    backgroundColor: '#cf5f4f',
-                    lineTension: 0.1,
-                    pointHitRadius: 10
-                }
-            )
+        if (yWerteKryptos.length !== 0) {
+            for (const dataset of yWerteKryptos) {
+                datasets.push(
+                    {
+                        label: dataset.bezeichnung,
+                        data: dataset.taeglicheEintraeY,
+                        borderColor: "#cf5f4f",
+                        backgroundColor: '#cf5f4f',
+                        lineTension: 0.1,
+                        pointHitRadius: 10
+                    }
+                )
+            }
         }
-
-        for (const dataset of yWerteBalsame) {
-            datasets.push(
-                {
-                    label: dataset.bezeichnung,
-                    data: dataset.taeglicheEintraeY,
-                    borderColor: "#9fe265",
-                    backgroundColor: '#9fe265',
-                    lineTension: 0.1,
-                    pointHitRadius: 10
-                }
-            )
+        if (yWerteBalsame.length !== 0) {
+            for (const dataset of yWerteBalsame) {
+                datasets.push(
+                    {
+                        label: dataset.bezeichnung,
+                        data: dataset.taeglicheEintraeY,
+                        borderColor: "#9fe265",
+                        backgroundColor: '#9fe265',
+                        lineTension: 0.1,
+                        pointHitRadius: 10
+                    }
+                )
+            }
         }
 
         return datasets;
@@ -166,7 +169,7 @@ function Diagramm(props) {
     const options = {
         layout: {
             padding: {
-                left: 20, // Platz links von der Y-Achse
+                left: 0, // Platz links von der Y-Achse
                 right: 20, // Platz rechts von der Y-Achse
                 top: 20, // Platz über der X-Achse
                 bottom: 20, // Platz unter der X-Achse
@@ -251,11 +254,15 @@ function Diagramm(props) {
         },
     };
 
+    const style = {
+        padding: 0,
+        margin: 0
+    }
 
     return (
         <div>
             <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
-                   color={"rgb(255, 99, 132)"}/>
+                   color={"rgb(255, 99, 132)"} style={style}/>
         </div>
     )
 }
