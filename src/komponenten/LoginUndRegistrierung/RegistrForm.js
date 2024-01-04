@@ -37,20 +37,29 @@ const RegisterModal = ({isOpen, onRequestClose}) => {
             setErrorMessage('Der Benutzername muss länger als 2 sein.');
             return;
         }
+
+        if (formData.passwort1.length < 6 || formData.passwort2.length < 6) {
+            setErrorMessage('passwort muss länger als 6 sein.');
+            return;
+        }
+
+        if(formData.passwort2 !== formData.passwort1){
+            setErrorMessage('Das wiederholte Passwort ist nicht dasselbe wie das erste!');
+            return;
+        }
+
         if (formData.vorname.length < 2 || formData.nachname.length < 2) {
             setErrorMessage('Vorname und Nachname muss länger als 2 sein.');
             return;
-        }
-        if (formData.passwort1.length < 6 || formData.passwort2.length < 6) {
-            setErrorMessage('passwort muss länger als 6 sein.');
-            return
         }
 
         try {
             const response = await axios.post('http://localhost:8080/registrieren', formData);
             console.log(response.data);
             setSuccessMessage('Erfolgreich registriert!');
-            onRequestClose();
+            setTimeout(() =>{
+                onRequestClose();
+            },2000);
         } catch (error) {
             console.error('Fehler bei der Registrierung', error);
             setErrorMessage('Fehler bei der Registrierung');
