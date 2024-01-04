@@ -251,6 +251,7 @@ function Diagramm(props) {
         },
     };
 
+
     return (
         <div>
             <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
