@@ -17,7 +17,7 @@ const Neuigkeiten = () => {
     return (
 
         <div className={'news-container'}>
-            <h2 className={'zitate'}> <em>Zitat:</em></h2>
+            <h2 className={'zitate'}> <em>Zitat:</em></h2> <br/>
             <div className={'news'}>
                 <p className={'news-text'}><em>{news}</em></p>
             </div>
