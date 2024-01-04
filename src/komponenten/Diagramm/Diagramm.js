@@ -36,23 +36,6 @@ function Diagramm(props) {
         "https://raw.githubusercontent.com/moritzrose/StimmungImages/main/6.png",
     ]
 
-    function createGradient(ctx, area) {
-        const colorStart = "crimson"
-        const colorNearMid = "orange"
-        const colorMid = "yellow"
-        const colorNearEnd = "yellowgreen"
-        const colorEnd = "lime"
-
-        const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
-
-        gradient.addColorStop(0, colorStart);
-        gradient.addColorStop(0.25, colorNearMid);
-        gradient.addColorStop(0.45, colorMid);
-        gradient.addColorStop(0.7, colorNearEnd);
-        gradient.addColorStop(1, colorEnd);
-        return gradient;
-    }
-
     function konvertiereXWerte(xAchsenArray) {
         let konvertiereXAchse = []
         for (let i = 0; i < xAchsenArray.length; i++) {
@@ -94,7 +77,6 @@ function Diagramm(props) {
     const [chartData, setChartData] = useState({
         datasets: [],
     })
-    const [datasets, setDataSets] = useState([{}]);
 
     useEffect(() => {
         const chart = chartRef.current;
@@ -102,26 +84,19 @@ function Diagramm(props) {
         if (!chart) {
             return;
         }
-        setDataSets(erstelleDataSet())
 
-        const chartData = {
+        setChartData({
             ...data,
             datasets: data.datasets.map((dataset, index) => ({
                 ...dataset,
                 hidden: index !== 0,
             })),
-        };
-
-        setChartData(chartData);
+        });
     }, [chartRef.current]);
 
     function erstelleDataSet() {
         const datasets = []
-        const xAchseKryptoBalsam = konvertiereXWerte(props.zeitstempel)
-        const yWerteKryptos = konvertiereYWerte(props.kryptonitDaten, xAchseKryptoBalsam)
-        const yWerteBalsame = konvertiereYWerte(props.balsamDaten, xAchseKryptoBalsam)
 
-        if (props.kryptonitDaten.length !== 0 && props.balsamDaten.length !== 0) {
         datasets.push(
             {
                 label: 'Stimmung',
@@ -133,46 +108,44 @@ function Diagramm(props) {
             }
         );
 
-        if (yWerteKryptos.length !== 0) {
-            for (const dataset of yWerteKryptos) {
-                datasets.push(
-                    {
-                        label: dataset.bezeichnung,
-                        data: dataset.taeglicheEintraeY,
-                        borderColor: "#cf5f4f",
-                        backgroundColor: '#cf5f4f',
-                        lineTension: 0.1,
-                        pointHitRadius: 10
-                    }
-                )
-            }
-        }
-        setKryptoErstellt(true)
+        const xAchseKryptoBalsam = konvertiereXWerte(props.zeitstempel)
+        const yWerteKryptos = konvertiereYWerte(props.kryptonitDaten, xAchseKryptoBalsam)
+        const yWerteBalsame = konvertiereYWerte(props.balsamDaten, xAchseKryptoBalsam)
 
-        if (yWerteBalsame.length !== 0) {
-            for (const dataset of yWerteBalsame) {
-                datasets.push(
-                    {
-                        label: dataset.bezeichnung,
-                        data: dataset.taeglicheEintraeY,
-                        borderColor: "#9fe265",
-                        backgroundColor: '#9fe265',
-                        lineTension: 0.1,
-                        pointHitRadius: 10
-                    }
-                )
-
-            }
+        for (const dataset of yWerteKryptos) {
+            datasets.push(
+                {
+                    label: dataset.bezeichnung,
+                    data: dataset.taeglicheEintraeY,
+                    borderColor: "#cf5f4f",
+                    backgroundColor: '#cf5f4f',
+                    lineTension: 0.1,
+                    pointHitRadius: 10
+                }
+            )
         }
-        setBalsamErstellt(true)
+
+        for (const dataset of yWerteBalsame) {
+            datasets.push(
+                {
+                    label: dataset.bezeichnung,
+                    data: dataset.taeglicheEintraeY,
+                    borderColor: "#9fe265",
+                    backgroundColor: '#9fe265',
+                    lineTension: 0.1,
+                    pointHitRadius: 10
+                }
+            )
+        }
+
 
         return datasets;
-    }
+
     }
 
     const data = {
         labels: props.zeitstempel,
-        datasets: datasets,
+        datasets:  erstelleDataSet()
     };
 
     const options = {
@@ -267,12 +240,12 @@ function Diagramm(props) {
         padding: 0,
         margin: 0
     }
-        return (
-            <div>
-                <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
-                       color={"rgb(255, 99, 132)"} style={style}/>
-            </div>
-        )
+    return (
+        <div>
+            <Chart className="chart" ref={chartRef} type='line' data={chartData} options={options}
+                   color={"rgb(255, 99, 132)"} style={style}/>
+        </div>
+    )
 }
 
 export default Diagramm;
