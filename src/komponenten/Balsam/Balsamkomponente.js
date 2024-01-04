@@ -86,18 +86,21 @@ function Balsamkomponente() {
         <div className="Balsamkomponente Komponente">
             <h2 className="balsamHeader">Gute Angewohnheiten</h2>
             <div className="balsamContainer">
-                <div className="balsamListe">
-                    {balsamListe ? balsamListe.map((balsam, index) => (
-                        <Balsam
-                            key={index}
-                            balsam={balsam}
-                            toggleAktivitaet={toggleAktivitaet}
-                            loescheBalsam={loescheBalsam}
-                            zeigePapierkorb={zeigePapierkorb}
-                            style={{backgroundColor: balsam.farbe}}
-                        />
-                    )) : <p>Trage hier deine Balsame ein, die Du tracken möchtest</p>}
-                </div>
+                {balsamListe && balsamListe.length > 0 ? (
+                    <div className="balsamListe">
+                        {balsamListe.map((balsam, index) => (
+                            <Balsam
+                                key={index}
+                                balsam={balsam}
+                                toggleAktivitaet={toggleAktivitaet}
+                                loescheBalsam={loescheBalsam}
+                                zeigePapierkorb={zeigePapierkorb}
+                                style={{backgroundColor: balsam.farbe}}
+                            />
+
+                        ))}
+                    </div>
+                ) : <p>Du trackst aktuell noch keine guten Angewohnheiten.</p>}
                 <div className="balsamEintrag">
                     <div className="balsamErstellen">
                         <input className="balsamInput"

@@ -64,7 +64,7 @@
 .Komponente {
     border: 3px solid rgb(250, 199, 1);
     border-radius: 20px;
-    box-shadow: 0 3px 5px rgba(242, 205, 57, 1.0), 0 4px 8px rgba(242, 205, 57, 1.0);
+    box-shadow: 0 3px 5px rgba(242,205,57,1.0), 0 4px 8px rgba(242,205,57,1.0);
     background-color: #fff;
     padding: 1.5rem;
 }
@@ -96,10 +96,11 @@
     }
 }
 
-.Kryptonitkomponente {
+.Kryptonitkomponente{
     grid-area: Kryptonitkomponente;
+    display: flex;
+    flex-direction: column;
 }
-
-.Stimmungskomponente {
+.Stimmungskomponente{
     grid-area: Stimmungskomponente;
 }

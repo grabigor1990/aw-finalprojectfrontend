@@ -28,7 +28,6 @@
     width: 100%;
 }
 
-
 .balsamErstellen {
     display: flex;
     justify-content: center;
@@ -64,7 +63,6 @@
     font-size: 20px;
     background-image: none;
     height: 60%;
-
 }
 
 .balsamButton:hover {
@@ -89,7 +87,7 @@
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
     box-sizing: border-box;
-    width: 5.5rem;
+    width: 6rem;
 }
 
 .balsam{
@@ -102,7 +100,6 @@
     width: 100%;
     box-sizing: border-box;
 }
-
 
 .balsamText{
     word-break: break-all;

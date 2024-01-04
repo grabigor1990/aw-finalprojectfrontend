@@ -4,7 +4,7 @@
     gap: 16px;
     flex-wrap: wrap;
     justify-content: flex-start;
-    flex-direction: column;
+
     align-content: stretch;
 }
 
@@ -36,6 +36,6 @@
 
 .news {
     font-size: 20px;
-    font-family: Alegreya Sans,serif;
+    font-family: Courier,serif;
 }
 

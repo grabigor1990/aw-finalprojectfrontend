@@ -23,7 +23,6 @@ function Diagrammkomponente(props) {
     const [loadingBalsame, setLoadingBalsame] = useState(true); // Neuer Ladezustand
 
 
-
     useEffect(() => {
         axios({
             method: "get",
@@ -58,7 +57,7 @@ function Diagrammkomponente(props) {
     }, []);
 
 
-    function aktualisiereStimmungen(stimmungen){
+    function aktualisiereStimmungen(stimmungen) {
         const aktualisierteXAchse = []
         const aktualisierteYAchse = []
 
@@ -68,7 +67,7 @@ function Diagrammkomponente(props) {
             setXAchseStimmungen(aktualisierteXAchse)
             setYAchseStimmungen(aktualisierteYAchse)
         })
-        setTimeout(()=> setLoadingStimmungen(false), 10)
+        setTimeout(() => setLoadingStimmungen(false), 10)
     }
 
     function aktualisiereKryptonite(kryptonite) {
@@ -90,7 +89,7 @@ function Diagrammkomponente(props) {
             )
         })
         setKryptonitEintraege(aktualisierteEintraege)
-        setTimeout(()=> setLoadingKryptonite(false), 10)
+        setTimeout(() => setLoadingKryptonite(false), 10)
         //das TimeOut hier ist notwendig, um diesen kurzen asynchronen Moment des "set..." Befehls zu überbrücken
         //und wirklich erst danach die loading Variable auf false zu setzen, sonst sind die Daten noch nicht angekommen.
     }
@@ -114,7 +113,7 @@ function Diagrammkomponente(props) {
             )
         })
         setBalsamEintraege(aktualisierteEintraege)
-        setTimeout(()=> setLoadingBalsame(false), 10)
+        setTimeout(() => setLoadingBalsame(false), 10)
     }
 
 
@@ -127,7 +126,8 @@ function Diagrammkomponente(props) {
         <div className="Diagrammkomponente Komponente">
             <div className="diagramHeader"></div>
             <div className="diagrammBody">
-                <Diagramm zeitstempel={xAchseStimmungen} stimmungen={yAchseStimmungen} kryptonitDaten={kryptonitEintraege} balsamDaten={balsamEintraege}/>
+                    <Diagramm zeitstempel={xAchseStimmungen} stimmungen={yAchseStimmungen}
+                              kryptonitDaten={kryptonitEintraege} balsamDaten={balsamEintraege}/>
             </div>
         </div>
     );

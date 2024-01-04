@@ -10,16 +10,17 @@ import Begruessung from "./Begruessung";
 function Profilkomponente() {
 
 
-    return (<div className="Profilkomponente Komponente">
+    return (
+        <div className="Profilkomponente Komponente">
 
-        <div className={'Profilbild-Begruessung'}>
-            <Profilbild/>
-            <Begruessung/>
-        </div>
-        <div className="Neuigkeiten">
-            <Neuigkeiten/>
-        </div>
-    </div>);
+            <div className={'Profilbild-Begruessung'}>
+                <Profilbild/>
+                <Begruessung/>
+            </div>
+            <div className="Neuigkeiten">
+                <Neuigkeiten/>
+            </div>
+        </div>);
 }
 
 export default Profilkomponente;
