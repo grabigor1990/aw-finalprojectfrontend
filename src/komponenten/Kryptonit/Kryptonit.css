@@ -61,7 +61,7 @@
     max-height: 320px;
     overflow-y: auto;
     margin-bottom: 20px;
-    justify-content: center;
+    justify-content: flex-start; /*damit die oberen Elemente nicht beim Scrollen verschwinden*/
 }
 
 .kryptonitEintrag{
