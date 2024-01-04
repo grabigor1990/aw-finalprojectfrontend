@@ -13,7 +13,6 @@ function Kryptonitkomponente(props) {
     const [fehlerMeldung, setFehlerMeldung] = useState("");
 
 
-
     useEffect(() => {
         aktualisiereKryptonite();
     }, []);
@@ -86,24 +85,32 @@ function Kryptonitkomponente(props) {
         <div className="Kryptonitkomponente Komponente">
             <h2 className="kryptonitHeader">Schlechte Angewohnheiten</h2>
             <div className="kryptonitBody">
-                <div className="kryptonitenListe">
-                    {kryptonite && kryptonite.length > 0 ? (
-                    kryptonite.map((kryptonit, index) => (
-                        <Kryptonit key={index} kryptonitId={kryptonit.kryptonitId} bezeichnung={kryptonit.bezeichnung}
-                                   haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0}
-                                   loeschFunktion={loescheKryptonit}/>
-                    ))) : <p>Du trackst aktuell noch keine schlechten Angewohnheiten.</p>}
+                {kryptonite && kryptonite.length > 0 ? (
+                    <div className="kryptonitenListe">
+                        {kryptonite.map((kryptonit, index) => (
+                            <Kryptonit
+                                key={index}
+                                kryptonitId={kryptonit.kryptonitId}
+                                bezeichnung={kryptonit.bezeichnung}
+                                haeufigkeit={kryptonit.taeglicheEintraege[kryptonit.taeglicheEintraege.length - 1]?.haeufigkeit ?? 0}
+                                loeschFunktion={loescheKryptonit}
+                            />
+                        ))}
+                    </div>
+                ) : <p>Du trackst aktuell noch keine schlechten Angewohnheiten.</p>}
+                <div className="kryptonitEintrag">
+                    <div className="kryptonitErstellen">
+                        <input className="kryptonitInput"
+                               type="text"
+                               onChange={handleChange}
+                               onKeyDown={bearbeiteKryptonitHinzufuegenDurchEntertaste}
+                               value={neuesKryptonit}
+                               placeholder="Füge schlechte Angewohnheit hinzu..."
+                               required/>
+                        <button className="kryptonitButton" onClick={erstelleKryptonit}></button>
+                    </div>
+                    <div className="fehlerMeldung">{fehlerMeldung && <span>🛑 {fehlerMeldung}</span>}</div>
                 </div>
-                <div className="kryptonitErstellen">
-                    <input className="kryptonitInput" type="text"
-                           onChange={handleChange}
-                           onKeyDown={bearbeiteKryptonitHinzufuegenDurchEntertaste}
-                           value={neuesKryptonit}
-                           placeholder="Füge eine neue schlechte Angewohnheit hinzu..."
-                           required/>
-                    <button className="kryptonitButton" onClick={erstelleKryptonit}></button>
-                </div>
-                <div className="fehlerMeldung">{fehlerMeldung && <span>🛑 {fehlerMeldung}</span>}</div>
             </div>
         </div>
     );
