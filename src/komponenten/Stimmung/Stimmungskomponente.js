@@ -32,11 +32,10 @@ function Stimmungskomponente() {
             url: "http://localhost:8080/stimmungen",
         })
             .then(response => {
-                setModalAnzeigen(false)
-                console.log(modalAnzeigen)
                 if (response.data.daten.length !== 0) {
                     setStimmungen(response.data.daten)
                     setKommentar(response.data.daten[response.data.daten.length - 1].kommentar)
+                    setLoadingStimmungen(false)
                 }
             })
             .catch(error => {
@@ -112,6 +111,7 @@ function Stimmungskomponente() {
     }
 
     if (loadingStimmungen || stimmungen.length === 0) {
+        console.log(stimmungen.length, loadingStimmungen)
         // Zeige eine Ladeanimation oder Nachricht an, während die Daten geladen werden
         return <div className="Stimmungskomponente Komponente">
             <div className="stimmungsBodyContainer">
