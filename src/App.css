@@ -1,7 +1,5 @@
 #root {
     height: 100%;
-    /*width: 65%;*//*rausnehmen, da der content hier nicht reinpasst und rechts über den Rand ragt durch body justify-content center*/
-/*    padding: 20px;*/
     font-family: Courier, serif;
 }
 .Layout {
@@ -37,7 +35,7 @@
 
 @media (min-width: 1000px) {
     #root {
-        padding: 20px 80px; /*wieso haben wir dies nochmals gemacht?*/
+        padding: 20px 80px;
         max-width: 1600px;
     }
 
