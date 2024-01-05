@@ -4,9 +4,6 @@ import axios from "axios";
 
 function Diagrammkomponente(props) {
 
-
-    //TODO Zeiten der Stimmungen etc importieren und in vernünftiges Format wandeln, Mo, Di etc... und Kryptonite überlegen
-
     const [stimmungen, setStimmungen] = useState([])
     const [xAchseStimmungen, setXAchseStimmungen] = useState([])
     const [yAchseStimmungen, setYAchseStimmungen] = useState([])
@@ -19,9 +16,7 @@ function Diagrammkomponente(props) {
 
 
     const [loadingStimmungen, setLoadingStimmungen] = useState(true); // Neuer Ladezustand
-    const [loadingKryptonite, setLoadingKryptonite] = useState(true); // Neuer Ladezustand
-    const [loadingBalsame, setLoadingBalsame] = useState(true); // Neuer Ladezustand
-
+    const [diagrammStimmungen, setDiagrammStimmungen] = useState(false);
 
     useEffect(() => {
         axios({
@@ -67,7 +62,12 @@ function Diagrammkomponente(props) {
             setXAchseStimmungen(aktualisierteXAchse)
             setYAchseStimmungen(aktualisierteYAchse)
         })
-        setTimeout(() => setLoadingStimmungen(false), 10)
+        setTimeout(() => {
+            setLoadingStimmungen(false)
+            if (stimmungen.length > 0) {
+                setDiagrammStimmungen(true);
+            }
+        }, 10)
     }
 
     function aktualisiereKryptonite(kryptonite) {
@@ -89,7 +89,6 @@ function Diagrammkomponente(props) {
             )
         })
         setKryptonitEintraege(aktualisierteEintraege)
-        setTimeout(() => setLoadingKryptonite(false), 10)
         //das TimeOut hier ist notwendig, um diesen kurzen asynchronen Moment des "set..." Befehls zu überbrücken
         //und wirklich erst danach die loading Variable auf false zu setzen, sonst sind die Daten noch nicht angekommen.
     }
@@ -113,7 +112,6 @@ function Diagrammkomponente(props) {
             )
         })
         setBalsamEintraege(aktualisierteEintraege)
-        setTimeout(() => setLoadingBalsame(false), 10)
     }
 
 
@@ -126,7 +124,7 @@ function Diagrammkomponente(props) {
         <div className="Diagrammkomponente Komponente">
             <div className="diagramHeader"></div>
             <div className="diagrammBody">
-                {stimmungen.length > 0 ? (
+                {diagrammStimmungen ? (
                     <Diagramm zeitstempel={xAchseStimmungen} stimmungen={yAchseStimmungen}
                               kryptonitDaten={kryptonitEintraege} balsamDaten={balsamEintraege}/>
                 ) : <p>Hier entsteht in Kürze dein Diagramm...</p>}
