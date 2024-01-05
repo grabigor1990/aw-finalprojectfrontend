@@ -192,7 +192,7 @@ function Diagramm(props) {
                         }
                     } else return 'circle';
                 },
-                radius: 1,
+                radius: 5,
             }
         },
         plugins: {
