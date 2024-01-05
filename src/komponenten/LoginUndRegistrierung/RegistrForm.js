@@ -34,12 +34,12 @@ const RegisterModal = ({isOpen, onRequestClose}) => {
 
     const handleSubmit = async () => {
         if (formData.benutzerName.length < 2) {
-            setErrorMessage('Der Benutzername muss länger als 2 sein.');
+            setErrorMessage('Der Benutzername muss mindestens 2 Zeichen haben.');
             return;
         }
 
         if (formData.passwort1.length < 6 || formData.passwort2.length < 6) {
-            setErrorMessage('passwort muss länger als 6 sein.');
+            setErrorMessage('Passwort muss mindestens 6 Zeichen haben.');
             return;
         }
 
@@ -49,7 +49,7 @@ const RegisterModal = ({isOpen, onRequestClose}) => {
         }
 
         if (formData.vorname.length < 2 || formData.nachname.length < 2) {
-            setErrorMessage('Vorname und Nachname muss länger als 2 sein.');
+            setErrorMessage('Vor- und Nachname müssen mindestens 2 Zeichen haben.');
             return;
         }
 
